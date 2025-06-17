@@ -39,9 +39,11 @@ export function EmailCaptureForm({ buttonText, formId, inputClassName, buttonCla
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log("Email captured:", data.email);
+    // For dark theme, toast styles should adapt via globals.css or specific variant
     toast({
       title: "Inscrição Recebida!",
       description: `Obrigado por seu interesse! Adicionamos ${data.email} à nossa lista de acesso antecipado.`,
+      className: "bg-slate-800 border-slate-700 text-slate-200", // Example of direct styling for dark toast
     });
     form.reset();
   }
@@ -58,17 +60,24 @@ export function EmailCaptureForm({ buttonText, formId, inputClassName, buttonCla
                 <Input
                   id={`${formId}-email`}
                   type="email"
-                  placeholder="seuemail@exemplo.com"
+                  placeholder="seu.email@empresa.tech"
                   {...field}
-                  className={cn("h-12 text-base placeholder:text-muted-foreground", inputClassName)}
+                  className={cn(
+                    "h-12 text-base text-slate-200 bg-slate-800/80 border-slate-700 placeholder:text-slate-500 focus:ring-offset-slate-900 focus:border-primary-highlight-from focus:ring-primary-highlight-from",
+                    inputClassName
+                  )}
                   aria-label="Endereço de e-mail"
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-400"/>
             </FormItem>
           )}
         />
-        <Button type="submit" variant="default" size="lg" className={cn("w-full sm:w-auto h-12 text-base", buttonClassName)}>
+        <Button type="submit" size="lg" className={cn(
+            "w-full sm:w-auto h-12 text-base font-semibold",
+            "button-gradient-primary button-glow-hover shadow-lg",
+            buttonClassName
+          )}>
           {buttonText}
         </Button>
       </form>
