@@ -41,10 +41,10 @@ export function TestimonialSection() {
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection as="div" className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl font-headline">
-            O Que Nossos Primeiros Usuários <span className="text-gradient-primary">Estão Dizendo</span>
+            Idealizado para <span className="text-gradient-primary">Líderes de Engenharia</span>
           </h2>
           <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
-            Feedbacks reais de quem já está experimentando o futuro da gestão de engenharia.
+            EngNexus AI foi desenhado para transformar desafios comuns em oportunidades de crescimento e eficiência para líderes como você.
           </p>
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
