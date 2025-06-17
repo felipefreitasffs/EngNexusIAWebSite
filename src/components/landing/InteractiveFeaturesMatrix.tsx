@@ -99,7 +99,7 @@ const featuresData: FeatureDetail[] = [
     icon: Workflow,
     title: "Gestão Eficiente de Processos",
     highlight: "Padronize e acompanhe processos chave de RH e TI.",
-    features: "Reduza o tempo de onboarding e garanta consistência com nossos fluxos de trabalho personalizáveis.",
+    features: ["Fluxos de trabalho personalizáveis para RH e TI", "Redução do tempo de onboarding", "Garantia de consistência em processos chave"],
     imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Onboarding+Fluxo",
     imageAlt: "Módulo de Processos Onboarding",
     imageHint: "onboarding process workflow",
@@ -163,10 +163,10 @@ export function InteractiveFeaturesMatrix() {
 
           <AnimatedSection
             as="div"
-            key={activeFeature.id}
-            className="transition-opacity duration-500 ease-in-out"
-            initialClassName="opacity-0 translate-y-5"
-            animateClassName="opacity-100 translate-y-0"
+            key={activeFeature.id} // Ensure re-animation on feature change
+            className="transition-opacity duration-500 ease-in-out" // Standard fade
+            initialClassName="opacity-0 translate-y-5" // Start transparent and slightly down
+            animateClassName="opacity-100 translate-y-0" // End opaque and in place
           >
             <Card className="bg-slate-800/90 border border-slate-700/90 shadow-2xl overflow-hidden rounded-xl">
               <Image
@@ -176,7 +176,7 @@ export function InteractiveFeaturesMatrix() {
                 height={500}
                 className="w-full object-cover aspect-[16/10]"
                 data-ai-hint={activeFeature.imageHint}
-                priority={activeFeature.id === featuresData[0].id}
+                priority={activeFeature.id === featuresData[0].id} // Prioritize first image for LCP
               />
               <CardContent className="p-6 space-y-3">
                 <h3 className="text-xl sm:text-2xl font-bold text-gradient-primary font-headline">

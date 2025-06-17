@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import {
@@ -6,7 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"; // Assuming ShadCN Carousel is available
+} from "@/components/ui/carousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, Lightbulb, Activity } from "lucide-react";
 
@@ -16,27 +17,27 @@ const insightExamples = [
     type: "Risco Potencial",
     title: "Risco de Burnout Detectado",
     description: "Maria S. demonstrou um volume de commits significativamente alto fora do horário comercial nas últimas 2 semanas, incluindo finais de semana. Considere uma conversa sobre carga de trabalho.",
-    color: "text-red-400",
-    bgColor: "bg-red-500/10",
-    borderColor: "border-red-500/30"
+    color: "text-red-400", // Specific semantic color
+    bgColor: "bg-red-500/10", // Specific semantic color
+    borderColor: "border-red-500/30" // Specific semantic color
   },
   {
     icon: Lightbulb,
     type: "Oportunidade",
     title: "Oportunidade de Mentoria",
     description: "João P. completou recentemente módulos de aprendizado em 'Cloud Architecture Avançada' e expressou interesse. Ana L. possui vasta experiência na área e poderia ser uma ótima mentora.",
-     color: "text-green-400",
-    bgColor: "bg-green-500/10",
-    borderColor: "border-green-500/30"
+     color: "text-green-400", // Specific semantic color
+    bgColor: "bg-green-500/10", // Specific semantic color
+    borderColor: "border-green-500/30" // Specific semantic color
   },
   {
     icon: Activity,
     type: "Observação de Processo",
     title: "Gargalo no Processo de Code Review",
     description: "O tempo médio para primeira revisão de PRs aumentou 30% na última sprint. Issues relacionadas ao Módulo X parecem ser as mais impactadas. Investigar a complexidade ou disponibilidade de revisores.",
-    color: "text-yellow-400",
-    bgColor: "bg-yellow-500/10",
-    borderColor: "border-yellow-500/30"
+    color: "text-yellow-400", // Specific semantic color
+    bgColor: "bg-yellow-500/10", // Specific semantic color
+    borderColor: "border-yellow-500/30" // Specific semantic color
   },
 ];
 
@@ -72,7 +73,7 @@ export function AIVisionSection() {
               <CarouselContent>
                 {insightExamples.map((insight, index) => (
                   <CarouselItem key={index}>
-                    <div className="p-1">
+                    <div className="p-1"> {/* Padding for carousel item spacing */}
                       <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor}`}>
                         <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2">
                           <insight.icon className={`h-6 w-6 ${insight.color}`} />
@@ -91,8 +92,8 @@ export function AIVisionSection() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-slate-300 bg-slate-700/50 hover:bg-slate-600/80 border-slate-600 disabled:opacity-30" />
-              <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-slate-300 bg-slate-700/50 hover:bg-slate-600/80 border-slate-600 disabled:opacity-30" />
+              <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
+              <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
             </Carousel>
           </AnimatedSection>
         </div>
