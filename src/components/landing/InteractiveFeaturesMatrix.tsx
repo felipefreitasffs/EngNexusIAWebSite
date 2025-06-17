@@ -148,7 +148,7 @@ export function InteractiveFeaturesMatrix() {
                 variant="outline"
                 onClick={() => setActiveFeatureId(feature.id)}
                 className={cn(
-                  "flex flex-col items-center justify-center text-center p-3 sm:p-4 h-auto aspect-square transition-all duration-300 ease-out rounded-xl",
+                  "flex flex-col items-center justify-center text-center p-3 sm:p-4 h-auto aspect-square transition-all duration-300 ease-out rounded-xl overflow-hidden", // Added overflow-hidden
                   "bg-slate-800/70 border-slate-700/80 text-slate-300",
                   "focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900",
                   activeFeatureId === feature.id ?
@@ -156,8 +156,8 @@ export function InteractiveFeaturesMatrix() {
                     "hover:bg-slate-700/90 hover:text-slate-100 hover:border-violet-500/50"
                 )}
               >
-                <feature.icon className={cn("h-7 w-7 sm:h-8 sm:w-8 mb-1 sm:mb-2", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
-                <span className="text-[10px] sm:text-xs font-medium leading-tight line-clamp-2">{feature.title}</span>
+                <feature.icon className={cn("h-7 w-7 sm:h-8 sm:w-8 mb-1 sm:mb-2 shrink-0", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
+                <span className="block w-full text-[10px] sm:text-xs font-medium leading-tight line-clamp-2">{feature.title}</span>
               </Button>
             ))}
           </AnimatedSection>
