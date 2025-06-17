@@ -3,7 +3,6 @@ import { InteractiveFeaturesMatrix } from "@/components/landing/InteractiveFeatu
 import { FinalCtaSection } from "@/components/landing/FinalCtaSection";
 import { FooterSection } from "@/components/landing/FooterSection";
 import { AIVisionSection } from "@/components/landing/AIVisionSection";
-import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { FaqSection } from "@/components/landing/FaqSection";
 
 
@@ -13,7 +12,6 @@ export default function Home() {
       <HeroSection />
       <AIVisionSection />
       <InteractiveFeaturesMatrix />
-      <TestimonialSection />
       <FaqSection />
       <FinalCtaSection />
       <FooterSection />
