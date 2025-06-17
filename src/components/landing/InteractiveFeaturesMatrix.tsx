@@ -135,7 +135,7 @@ export function InteractiveFeaturesMatrix() {
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection as="div" className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl font-headline">
-            Uma Plataforma, <span className="text-gradient-primary">Todas as Respostas.</span>
+            Descubra a Amplitude da <span className="text-gradient-primary">Nossa Plataforma.</span>
           </h2>
         </AnimatedSection>
 
@@ -161,9 +161,9 @@ export function InteractiveFeaturesMatrix() {
             ))}
           </AnimatedSection>
 
-          <AnimatedSection 
-            as="div" 
-            key={activeFeature.id} 
+          <AnimatedSection
+            as="div"
+            key={activeFeature.id}
             className="transition-opacity duration-500 ease-in-out"
             initialClassName="opacity-0 translate-y-5"
             animateClassName="opacity-100 translate-y-0"
@@ -173,8 +173,8 @@ export function InteractiveFeaturesMatrix() {
                 src={activeFeature.imageSrc}
                 alt={activeFeature.imageAlt}
                 width={800}
-                height={500} 
-                className="w-full object-cover aspect-[16/10]" 
+                height={500}
+                className="w-full object-cover aspect-[16/10]"
                 data-ai-hint={activeFeature.imageHint}
                 priority={activeFeature.id === featuresData[0].id}
               />
