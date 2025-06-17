@@ -131,7 +131,7 @@ export function InteractiveFeaturesMatrix() {
   const activeFeature = featuresData.find(f => f.id === activeFeatureId) || featuresData[0];
 
   return (
-    <section className="w-full py-16 md:py-24 bg-slate-900/50"> {/* Adjusted background */}
+    <section className="w-full py-16 md:py-24 bg-slate-900/50">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection as="div" className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl font-headline">
@@ -140,7 +140,6 @@ export function InteractiveFeaturesMatrix() {
         </AnimatedSection>
 
         <div className="grid md:grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)] gap-8 md:gap-12 items-start">
-          {/* Left Column: Feature Selection Grid */}
           <AnimatedSection as="div" className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 sticky top-24">
             {featuresData.map((feature) => (
               <Button
@@ -148,7 +147,7 @@ export function InteractiveFeaturesMatrix() {
                 variant="outline"
                 onClick={() => setActiveFeatureId(feature.id)}
                 className={cn(
-                  "flex flex-col items-center justify-center text-center p-3 sm:p-2.5 aspect-square transition-all duration-300 ease-out rounded-xl overflow-hidden",
+                  "flex flex-col items-center justify-center text-center p-3 sm:p-4 w-full h-28 sm:h-32 transition-all duration-300 ease-out rounded-xl overflow-hidden",
                   "bg-slate-800/70 border-slate-700/80 text-slate-300",
                   "focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900",
                   activeFeatureId === feature.id ?
@@ -156,14 +155,12 @@ export function InteractiveFeaturesMatrix() {
                     "hover:bg-slate-700/90 hover:text-slate-100 hover:border-violet-500/50"
                 )}
               >
-                <feature.icon className={cn("h-7 w-7 sm:h-9 mb-1.5 shrink-0", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
-                <span className="block w-full text-xs font-medium leading-snug line-clamp-2">{feature.title}</span>
+                <feature.icon className={cn("h-8 w-8 sm:h-10 mb-2 shrink-0", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
+                <span className="block w-full text-xs sm:text-sm font-medium leading-tight line-clamp-2">{feature.title}</span>
               </Button>
             ))}
           </AnimatedSection>
 
-          {/* Right Column: Feature Details Panel */}
-          {/* Key ensures re-render and animation trigger on feature change */}
           <AnimatedSection 
             as="div" 
             key={activeFeature.id} 
@@ -179,7 +176,7 @@ export function InteractiveFeaturesMatrix() {
                 height={500} 
                 className="w-full object-cover aspect-[16/10]" 
                 data-ai-hint={activeFeature.imageHint}
-                priority={activeFeature.id === featuresData[0].id} // Prioritize first image
+                priority={activeFeature.id === featuresData[0].id}
               />
               <CardContent className="p-6 space-y-3">
                 <h3 className="text-xl sm:text-2xl font-bold text-gradient-primary font-headline">
