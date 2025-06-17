@@ -1,4 +1,4 @@
-import type {Config} from 'tailwindcss';
+import type {Config}from 'tailwindcss';
 
 export default {
   darkMode: ['class'],
@@ -67,9 +67,13 @@ export default {
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: 'var(--radius)', // 0.75rem
+        md: 'calc(var(--radius) - 2px)', // 0.75rem - 2px
+        sm: 'calc(var(--radius) - 4px)', // 0.75rem - 4px
+        xl: 'var(--radius)', // Explicitly match lg for rounded-xl use
+      },
+      boxShadow: {
+        lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
       },
       keyframes: {
         'accordion-down': {
