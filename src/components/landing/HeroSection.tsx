@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { EmailCaptureForm } from "./EmailCaptureForm";
 import AnimatedSection from "./AnimatedSection";
@@ -42,7 +43,7 @@ export function HeroSection() {
           {/* Placeholder for Video/Lottie Animation */}
           <div className="aspect-video bg-slate-800/50 rounded-xl shadow-2xl border border-slate-700 flex items-center justify-center">
             <Image
-              src="https://placehold.co/800x450.png/172038/E2E8F0?text=UI+Animation+Showcase"
+              src="https://placehold.co/800x450.png/172038/E2E8F0?text=Demonstra%C3%A7%C3%A3o+da+Interface+EngNexus+AI"
               alt="EngNexus AI UI Showcase"
               width={800}
               height={450}
