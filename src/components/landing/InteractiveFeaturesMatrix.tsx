@@ -148,7 +148,7 @@ export function InteractiveFeaturesMatrix() {
                 variant="outline"
                 onClick={() => setActiveFeatureId(feature.id)}
                 className={cn(
-                  "flex flex-col items-center justify-center text-center p-3 sm:p-4 h-auto aspect-square transition-all duration-300 ease-out rounded-xl overflow-hidden", // Added overflow-hidden
+                  "flex flex-col items-center justify-start text-center p-3 sm:p-4 h-auto aspect-square transition-all duration-300 ease-out rounded-xl overflow-hidden", // Changed justify-center to justify-start
                   "bg-slate-800/70 border-slate-700/80 text-slate-300",
                   "focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900",
                   activeFeatureId === feature.id ?
