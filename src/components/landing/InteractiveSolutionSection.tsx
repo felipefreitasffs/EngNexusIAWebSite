@@ -56,9 +56,9 @@ export function InteractiveSolutionSection() {
                 className="w-full justify-start text-left h-auto py-4 px-5 data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-300 data-[state=active]:shadow-lg hover:bg-slate-700/50 hover:text-slate-300 text-slate-400 rounded-lg border border-transparent data-[state=active]:border-violet-500/50"
               >
                 <tab.icon className="mr-3 h-6 w-6 shrink-0" />
-                <div className="flex flex-col">
-                    <span className="text-lg font-semibold">{tab.title}</span>
-                    <p className="text-sm text-slate-500 data-[state=active]:text-violet-400">{tab.problemText}</p>
+                <div className="flex flex-1 flex-col min-w-0">
+                    <span className="text-lg font-semibold whitespace-normal">{tab.title}</span>
+                    <p className="text-sm text-slate-500 data-[state=active]:text-violet-400 whitespace-normal">{tab.problemText}</p>
                 </div>
               </TabsTrigger>
             ))}
