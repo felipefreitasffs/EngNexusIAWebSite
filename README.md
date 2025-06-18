@@ -1,6 +1,6 @@
 # EngNexus AI - Seu Copiloto de IA para Liderança em Engenharia
 
-[![EngNexus AI](./public/og-image.png)](https://yourdomain.com) <!-- Substitua pela URL do seu app -->
+[![EngNexus AI](./public/images/engnexusia1.png)](https://engnexusia.com)
 
 EngNexus AI é uma plataforma inovadora projetada para ser o copiloto de IA para líderes de engenharia. Nossa missão é conectar os pontos entre pessoas, código, fluxo de trabalho e custos, permitindo que líderes de tecnologia parem de gerenciar planilhas e comecem a liderar com clareza estratégica e insights proativos.
 
@@ -44,7 +44,7 @@ Esta landing page foi construída para apresentar o EngNexus AI, suas funcionali
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/your-username/engnexus-ai-landing.git # Substitua pela URL do seu repositório
+    git clone https://github.com/felipefreitasffs/EngNexusIAWebSite.git
     cd engnexus-ai-landing
     ```
 
@@ -122,20 +122,6 @@ Esta landing page foi construída para apresentar o EngNexus AI, suas funcionali
 *   `npm run lint`: Executa o ESLint para análise de código.
 *   `npm run typecheck`: Executa o compilador TypeScript para verificação de tipos.
 
-## 🧠 Funcionalidades de IA com Genkit
-
-O projeto inclui uma configuração básica do Genkit para demonstrar como as funcionalidades de IA podem ser integradas.
-
-*   **Localização**: O código relacionado ao Genkit está em `src/ai/`.
-    *   `src/ai/genkit.ts`: Configuração e inicialização do plugin Genkit.
-    *   `src/ai/flows/generate-insight-card.ts`: Um exemplo de fluxo Genkit que simula a geração de "Insight Cards" com base em dados de equipe.
-    *   `src/ai/dev.ts`: Ponto de entrada para o servidor de desenvolvimento do Genkit.
-
-*   **Como Funciona**:
-    *   Os fluxos Genkit (`.flow.ts`) são definidos usando schemas Zod para entrada e saída, e prompts que interagem com modelos de linguagem (LLMs).
-    *   Esses fluxos podem ser chamados a partir de Server Components ou API Routes no Next.js.
-    *   A UI de desenvolvimento do Genkit (`npm run genkit:dev`) permite testar e inspecionar esses fluxos.
-
 ## 📈 Otimizações de SEO
 
 A landing page foi desenvolvida com SEO em mente:
@@ -177,24 +163,13 @@ A landing page foi desenvolvida com SEO em mente:
 └── tsconfig.json             # Configurações do TypeScript
 ```
 
-## 🌐 Deploy
-
-Esta aplicação Next.js está pronta para ser hospedada em plataformas como:
-
-*   [Vercel](https://vercel.com/) (Altamente recomendado para Next.js)
-*   [Netlify](https://www.netlify.com/)
-*   [Firebase Hosting](https://firebase.google.com/docs/hosting) (com configuração para Next.js via App Hosting ou Cloud Functions)
-*   Outros provedores que suportam Node.js.
-
-Certifique-se de configurar as variáveis de ambiente na sua plataforma de hospedagem.
-
 ## 🤝 Contribuindo
 
 Atualmente, este projeto é mantido pela equipe EngNexus AI. Para contribuições ou sugestões, por favor, abra uma Issue no repositório.
 
 ## 📄 Licença
 
-Este projeto é de propriedade da EngNexus AI. Todos os direitos reservados. (Ou especifique uma licença open-source se aplicável).
+Este projeto é de propriedade da EngNexus AI. Todos os direitos reservados.
 
 ---
 

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yourdomain.com/</loc>
+    <loc>https://engnexusia.com/</loc>
     <lastmod>2024-07-26</lastmod> 
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- 
-    Por favor, substitua "https://yourdomain.com" pelo seu domínio real.
-    Atualize a data em <lastmod> para a data da última modificação significativa da sua página.
-    Se você adicionar mais páginas, adicione mais <url> blocos aqui.
-  -->
 </urlset>
