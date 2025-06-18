@@ -1,12 +1,45 @@
 
 import { type NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import sgMail from '@sendgrid/mail';
 
 const EmailSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um endereço de e-mail válido." }),
 });
 
 const TARGET_EMAIL_ADDRESS = 'felipefreitas.ffs@gmail.com';
+const FROM_EMAIL_ADDRESS = 'noreply@engnexus.ai'; // Use um e-mail verificado no seu provedor (ex: SendGrid)
+
+// Configure a chave de API do SendGrid.
+// É crucial que esta chave seja guardada em variáveis de ambiente e não diretamente no código.
+// Crie um arquivo .env.local na raiz do seu projeto e adicione:
+// SENDGRID_API_KEY='SUA_CHAVE_DE_API_DO_SENDGRID'
+if (process.env.SENDGRID_API_KEY) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+} else {
+  console.warn("SENDGRID_API_KEY não configurada. O envio de e-mails real não funcionará.");
+}
+
+async function sendEmailWithSendGrid(to: string, from: string, subject: string, text: string, html: string) {
+  if (!process.env.SENDGRID_API_KEY) {
+    console.error("Tentativa de enviar e-mail sem SENDGRID_API_KEY. Simulação ativada.");
+    // Simula um envio bem-sucedido para fins de desenvolvimento local sem a chave
+    return Promise.resolve(); 
+  }
+
+  const msg = { to, from, subject, text, html };
+  try {
+    await sgMail.send(msg);
+    console.log(`E-mail enviado para ${to} via SendGrid com sucesso.`);
+  } catch (error: any) {
+    console.error("Erro ao enviar e-mail via SendGrid:", error);
+    if (error.response) {
+      console.error('Corpo do erro SendGrid:', error.response.body);
+    }
+    // Re-throw para ser pego no bloco catch principal da API
+    throw new Error("Falha ao enviar o e-mail através do serviço."); 
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,40 +55,34 @@ export async function POST(request: NextRequest) {
 
     const { email } = validationResult.data;
 
-    // Em uma aplicação real, você usaria um serviço de e-mail (SendGrid, Mailgun, Nodemailer, etc.)
-    // para enviar o e-mail capturado para o endereço de destino.
-    console.log(`E-mail capturado: ${email}. Simulação de envio para: ${TARGET_EMAIL_ADDRESS}`);
-
-    // Exemplo de como você poderia chamar uma função de envio de e-mail (não implementada aqui):
-    // await sendEmail({
-    //   to: TARGET_EMAIL_ADDRESS,
-    //   from: 'noreply@engnexus.ai', // Ou um e-mail verificado do seu domínio
-    //   subject: 'Novo Lead Capturado - EngNexus AI',
-    //   text: `Um novo usuário se inscreveu para acesso antecipado com o e-mail: ${email}`,
-    //   html: `<p>Um novo usuário se inscreveu para acesso antecipado com o e-mail: <strong>${email}</strong></p>`,
-    // });
-
-    // Simula um atraso de rede para fins de demonstração
-    await new Promise(resolve => setTimeout(resolve, 750));
-
-    return NextResponse.json({ message: `Obrigado! ${email} foi adicionado à nossa lista.` }, { status: 200 });
-  } catch (error) {
-    console.error("Erro ao capturar e-mail:", error);
-    let errorMessage = "Ocorreu um erro ao processar sua solicitação.";
-    if (error instanceof Error) {
-        // Potentially log more detailed error or customize message
+    // Lógica de envio de e-mail real:
+    try {
+      await sendEmailWithSendGrid(
+        TARGET_EMAIL_ADDRESS,
+        FROM_EMAIL_ADDRESS,
+        'Novo Lead Capturado - EngNexus AI',
+        `Um novo usuário se inscreveu para acesso antecipado com o e-mail: ${email}`,
+        `<p>Um novo usuário se inscreveu para acesso antecipado com o e-mail: <strong>${email}</strong></p><p>Este e-mail foi capturado através do formulário da landing page EngNexus AI.</p>`
+      );
+      console.log(`E-mail capturado: ${email}. Solicitação de envio para: ${TARGET_EMAIL_ADDRESS} via SendGrid processada.`);
+    } catch (emailError) {
+      // Se sendEmailWithSendGrid lançar um erro, ele será pego aqui.
+      // A mensagem de erro já foi logada dentro de sendEmailWithSendGrid.
+      // Retornamos um erro genérico para o cliente.
+      return NextResponse.json({ message: "Ocorreu um erro ao tentar registrar seu e-mail. Por favor, tente novamente mais tarde." }, { status: 500 });
     }
+    
+    // Simula um atraso de rede para fins de demonstração se não estiver usando SendGrid real
+    if (!process.env.SENDGRID_API_KEY) {
+        await new Promise(resolve => setTimeout(resolve, 750));
+    }
+
+    return NextResponse.json({ message: `Obrigado! ${email} foi adicionado à nossa lista de espera.` }, { status: 200 });
+
+  } catch (error) {
+    console.error("Erro geral ao processar a solicitação de captura de e-mail:", error);
+    let errorMessage = "Ocorreu um erro inesperado ao processar sua solicitação.";
+    // Não exponha detalhes do erro ao cliente por segurança
     return NextResponse.json({ message: errorMessage }, { status: 500 });
   }
 }
-
-// Função de exemplo (não funcional sem um serviço de e-mail configurado)
-// async function sendEmail(options: { to: string, from: string, subject: string, text: string, html: string }) {
-//   // Lógica para integrar com SendGrid, Nodemailer, AWS SES, etc.
-//   console.log(`Tentativa de envio de e-mail para ${options.to} com assunto "${options.subject}"`);
-//   // Exemplo com Nodemailer (requer instalação e configuração):
-//   // const nodemailer = require('nodemailer');
-//   // const transporter = nodemailer.createTransport({ /* ...configurações do seu provedor de e-mail... */ });
-//   // await transporter.sendMail(options);
-//   return Promise.resolve();
-// }
