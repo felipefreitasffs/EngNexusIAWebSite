@@ -9,13 +9,13 @@ import {
   BrainCircuit,
   Users,
   Smile,
-  BarChartBig, // Consider changing this icon if "Excelência em Engenharia" is broader than just charts
+  BarChartBig, 
   DollarSign,
   Workflow,
   LibraryBig,
   CalendarDays,
   CheckCircle,
-  TrendingUp, // New icon for "Excelência em Engenharia"
+  TrendingUp, 
   type LucideIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,9 +26,9 @@ import { cn } from '@/lib/utils';
 interface FeatureDetail {
   id: string;
   icon: LucideIcon;
-  title: string; // This is for the button
-  highlight: string; // This is for the H3 in the details panel
-  features: string[] | string; // This is for the list in the details panel
+  title: string; 
+  highlight: string; 
+  features: string[] | string; 
   imageSrc: string;
   imageAlt: string;
   imageHint: string;
@@ -41,8 +41,8 @@ const featuresData: FeatureDetail[] = [
     title: "Painel de Controle Inteligente",
     highlight: "Visão unificada e em tempo real da saúde da sua engenharia.",
     features: ["KPIs personalizáveis (DEVEX, Saúde do Deploy, Custos)", "Central de Ações", "Insights proativos de IA"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Dashboard+IA",
-    imageAlt: "Dashboard com IA",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Dashboard+IA",
+    imageAlt: "Painel de controle inteligente EngNexus AI com KPIs e insights de IA",
     imageHint: "dashboard ai",
   },
   {
@@ -51,8 +51,8 @@ const featuresData: FeatureDetail[] = [
     title: "Copiloto de IA para Líderes",
     highlight: "Assistência inteligente para otimizar a gestão e identificar oportunidades.",
     features: ["Geração automática de títulos/descrições", "Análise de contexto", "Suporte à tradução"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=JSON+Insight",
-    imageAlt: "Animação JSON para InsightCard",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=JSON+Insight",
+    imageAlt: "Demonstração do copiloto de IA EngNexus AI gerando insights em formato JSON",
     imageHint: "json insight card animation",
   },
   {
@@ -61,8 +61,8 @@ const featuresData: FeatureDetail[] = [
     title: "Gestão 360° de Pessoas e Times",
     highlight: "Do micro ao macro: gerencie indivíduos e o time com a mesma facilidade.",
     features: ["Acesse perfis completos", "Prepare suas conversas em um Painel de 1:1s centralizado", "Acompanhe o crescimento de todo o seu time no Painel de PDIs com visão Kanban."],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Painel+PDIs+Kanban",
-    imageAlt: "Painel de PDIs em formato Kanban",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Painel+PDIs+Kanban",
+    imageAlt: "Painel de Planos de Desenvolvimento Individuais (PDIs) em formato Kanban no EngNexus AI",
     imageHint: "kanban board PDI",
   },
   {
@@ -71,28 +71,28 @@ const featuresData: FeatureDetail[] = [
     title: "Otimização DEVEX",
     highlight: "Entenda a experiência do dev com dados qualitativos e quantitativos.",
     features: ["Combine o sentimento das pesquisas com dados reais", "Visualize o foco do seu time com o Mapa de Calor de Atividade", "Garanta um processo de Code Review saudável e equilibrado."],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Activity+Heatmap",
-    imageAlt: "Mapa de Calor de Atividade (Activity Heatmap)",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Activity+Heatmap",
+    imageAlt: "Mapa de Calor de Atividade (Activity Heatmap) mostrando padrões de trabalho da equipe no EngNexus AI",
     imageHint: "activity heatmap graph",
   },
   {
-    id: "metricas-dora", // ID remains for consistency if referred elsewhere, but content changes
-    icon: TrendingUp, // Changed icon to reflect broader "Excelência"
-    title: "Excelência em Engenharia", // Updated Button Title
-    highlight: "Vá além do DORA para a verdadeira excelência.", // Updated H3
-    features: ["Analise o Cycle Time de PRs e Issues", "Identifique gargalos com o Gráfico de Envelhecimento", "Defina metas para seu time", "Compare sua performance com benchmarks da indústria"], // Updated feature list
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Aging+Chart", // New image
-    imageAlt: "Gráfico de Envelhecimento (Aging Chart)",
+    id: "metricas-dora", 
+    icon: TrendingUp, 
+    title: "Excelência em Engenharia", 
+    highlight: "Vá além do DORA para a verdadeira excelência.", 
+    features: ["Analise o Cycle Time de PRs e Issues", "Identifique gargalos com o Gráfico de Envelhecimento", "Defina metas para seu time", "Compare sua performance com benchmarks da indústria"], 
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Aging+Chart", 
+    imageAlt: "Gráfico de Envelhecimento (Aging Chart) para identificar gargalos no fluxo de trabalho no EngNexus AI",
     imageHint: "aging chart graph",
   },
   {
     id: "controle-custos",
     icon: DollarSign,
-    title: "Visibilidade e Controle de Custos (FinOps)", // Title remains the same, or adjust if needed
-    highlight: "Conecte cada real investido a um resultado de engenharia.", // Updated H3
-    features: ["Entenda para onde vai seu orçamento com a análise de Alocação de Esforço (Features vs. Bugs vs. Débito Técnico)", "Conecte os custos de cloud aos seus sistemas."], // Updated feature list
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Aloca%C3%A7%C3%A3o+Esfor%C3%A7o", // New image
-    imageAlt: "Gráfico de Alocação de Esforço",
+    title: "Visibilidade e Controle de Custos (FinOps)", 
+    highlight: "Conecte cada real investido a um resultado de engenharia.", 
+    features: ["Entenda para onde vai seu orçamento com a análise de Alocação de Esforço (Features vs. Bugs vs. Débito Técnico)", "Conecte os custos de cloud aos seus sistemas."], 
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Aloca%C3%A7%C3%A3o+Esfor%C3%A7o", 
+    imageAlt: "Gráfico de Alocação de Esforço mostrando distribuição de trabalho em Features, Bugs e Débito Técnico no EngNexus AI",
     imageHint: "effort allocation chart",
   },
   {
@@ -101,8 +101,8 @@ const featuresData: FeatureDetail[] = [
     title: "Gestão Eficiente de Processos",
     highlight: "Padronize e acompanhe processos chave de RH e TI.",
     features: ["Fluxos de trabalho personalizáveis para RH e TI", "Redução do tempo de onboarding", "Garantia de consistência em processos chave"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Onboarding+Fluxo",
-    imageAlt: "Módulo de Processos Onboarding",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Onboarding+Fluxo",
+    imageAlt: "Módulo de gestão de processos de onboarding de novos colaboradores no EngNexus AI",
     imageHint: "onboarding process workflow",
   },
   {
@@ -111,8 +111,8 @@ const featuresData: FeatureDetail[] = [
     title: "Catálogo de Sistemas Centralizado",
     highlight: "Mantenha um inventário claro e acessível dos seus sistemas.",
     features: ["Registro de sistemas com dono, tecnologias e links para documentação"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Catalogo+Sistemas",
-    imageAlt: "Página do Catálogo de Sistemas",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Catalogo+Sistemas",
+    imageAlt: "Página do Catálogo de Sistemas centralizado no EngNexus AI com detalhes de cada sistema",
     imageHint: "system catalog page",
   },
   {
@@ -121,8 +121,8 @@ const featuresData: FeatureDetail[] = [
     title: "Planejamento de Ausências",
     highlight: "Melhore a visibilidade sobre a disponibilidade da equipe.",
     features: ["Calendário de ausências", "Fluxo de solicitação e aprovação de férias e day-offs"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Calendario+Ausencias",
-    imageAlt: "Calendário de Ausências do Time",
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Calendario+Ausencias",
+    imageAlt: "Calendário de Ausências do Time para planejamento e visibilidade no EngNexus AI",
     imageHint: "team absence calendar",
   },
 ];
@@ -132,31 +132,35 @@ export function InteractiveFeaturesMatrix() {
   const activeFeature = featuresData.find(f => f.id === activeFeatureId) || featuresData[0];
 
   return (
-    <section className="w-full py-16 md:py-24 bg-slate-900/50">
+    <section className="w-full py-16 md:py-24 bg-background/70" aria-labelledby="interactive-features-title">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection as="div" className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl font-headline">
+          <h2 id="interactive-features-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
             Descubra a Amplitude da <span className="text-gradient-primary">Nossa Plataforma.</span>
           </h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)] gap-8 md:gap-12 items-start">
-          <AnimatedSection as="div" className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 sticky top-24">
+          <AnimatedSection as="div" className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 sticky top-24" role="tablist" aria-orientation="vertical">
             {featuresData.map((feature) => (
               <Button
                 key={feature.id}
+                role="tab"
+                aria-selected={activeFeatureId === feature.id}
+                aria-controls={`feature-panel-${feature.id}`}
+                id={`feature-tab-${feature.id}`}
                 variant="outline"
                 onClick={() => setActiveFeatureId(feature.id)}
                 className={cn(
                   "flex flex-col items-center justify-center text-center p-3 sm:p-2.5 w-full h-28 sm:h-32 transition-all duration-300 ease-out rounded-xl overflow-hidden",
-                  "bg-slate-800/70 border-slate-700/80 text-slate-300",
-                  "focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900",
+                  "bg-card border-border text-foreground",
+                  "focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background",
                   activeFeatureId === feature.id ?
-                    "bg-gradient-to-br from-violet-600/80 to-cyan-600/70 border-violet-500 text-white shadow-2xl ring-2 ring-violet-500/80 scale-105" :
-                    "hover:bg-slate-700/90 hover:text-slate-100 hover:border-violet-500/50"
+                    "bg-gradient-to-br from-primary via-purple-500 to-primary-highlight-to border-primary text-primary-foreground shadow-2xl ring-2 ring-primary/80 scale-105" :
+                    "hover:bg-accent hover:text-accent-foreground hover:border-primary/50"
                 )}
               >
-                <feature.icon className={cn("h-8 w-8 sm:h-9 mb-1.5 shrink-0", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
+                <feature.icon className={cn("h-8 w-8 sm:h-9 mb-1.5 shrink-0", activeFeatureId === feature.id ? "text-primary-foreground" : "text-primary")} />
                 <span className="block w-full text-xs leading-snug font-medium line-clamp-2">{feature.title}</span>
               </Button>
             ))}
@@ -164,12 +168,15 @@ export function InteractiveFeaturesMatrix() {
 
           <AnimatedSection
             as="div"
-            key={activeFeature.id} // Ensure re-animation on feature change
-            className="transition-opacity duration-500 ease-in-out" // Standard fade
-            initialClassName="opacity-0 translate-y-5" // Start transparent and slightly down
-            animateClassName="opacity-100 translate-y-0" // End opaque and in place
+            key={activeFeature.id} 
+            className="transition-opacity duration-500 ease-in-out" 
+            initialClassName="opacity-0 translate-y-5" 
+            animateClassName="opacity-100 translate-y-0"
+            role="tabpanel"
+            id={`feature-panel-${activeFeature.id}`}
+            aria-labelledby={`feature-tab-${activeFeature.id}`}
           >
-            <Card className="bg-slate-800/90 border border-slate-700/90 shadow-2xl overflow-hidden rounded-xl">
+            <Card className="bg-card border border-border shadow-2xl overflow-hidden rounded-xl">
               <Image
                 src={activeFeature.imageSrc}
                 alt={activeFeature.imageAlt}
@@ -177,18 +184,18 @@ export function InteractiveFeaturesMatrix() {
                 height={500}
                 className="w-full object-cover aspect-[16/10]"
                 data-ai-hint={activeFeature.imageHint}
-                priority={activeFeature.id === featuresData[0].id} // Prioritize first image for LCP
+                priority={activeFeature.id === featuresData[0].id} 
               />
               <CardContent className="p-6 space-y-3">
                 <h3 className="text-xl sm:text-2xl font-bold text-gradient-primary font-headline">
                   {activeFeature.highlight}
                 </h3>
                 {typeof activeFeature.features === 'string' ? (
-                   <p className="text-slate-300 font-body text-sm sm:text-base">{activeFeature.features}</p>
+                   <p className="text-muted-foreground font-body text-sm sm:text-base">{activeFeature.features}</p>
                 ) : (
                   <ul className="list-none space-y-1.5 sm:space-y-2">
                     {activeFeature.features.map((item, index) => (
-                      <li key={index} className="flex items-start text-slate-300 font-body text-sm sm:text-base">
+                      <li key={index} className="flex items-start text-muted-foreground font-body text-sm sm:text-base">
                         <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-400 mr-2 mt-0.5 sm:mt-1 shrink-0" />
                         <span>{item}</span>
                       </li>
