@@ -8,58 +8,60 @@ body {
 
 @layer base {
   :root {
-    --background: 215 28% 17%; /* slate-900 */
-    --foreground: 220 13% 91%; /* slate-200 */
+    --background: 240 10% 3.9%; /* Cinza muito escuro, quase preto - Ex: slate-950 */
+    --foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
 
-    --card: 215 28% 22%; /* slate-800 for default cards */
-    --card-foreground: 220 13% 91%; /* slate-200 */
+    --card: 240 4.8% 12%; /* Cinza escuro para cards - Ex: slate-900 */
+    --card-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
 
-    --popover: 215 28% 20%; /* Slightly darker than card, e.g. slate-800/900 boundary */
-    --popover-foreground: 220 13% 91%; /* slate-200 */
+    --popover: 240 4.8% 10%; /* Um pouco mais escuro que o card - Ex: slate-900/950 */
+    --popover-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    
+    --primary: 258.6 90.1% 66.3%; /* Roxo #7C3AED (HSL) */
+    --primary-foreground: 0 0% 98%; /* Branco para contraste com primário */
+    
+    --secondary: 240 3.7% 15.9%; /* Cinza para bordas/fundos sutis - Ex: slate-800 */
+    --secondary-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
 
-    /* Primary highlight: gradient violet-500 to cyan-400. Base HSL is violet-500. */
-    --primary: 262 83% 58%; /* violet-500 */
-    --primary-foreground: 210 40% 98%; /* slate-50 */
-    --primary-highlight-from: 262 83% 58%; /* violet-500 */
-    --primary-highlight-to: 190 80% 58%; /* cyan-400 approx HSL */
+    --muted: 240 3.7% 15.9%; /* Mesma cor de secondary para fundos de elementos muted - Ex: slate-800 */
+    --muted-foreground: 240 5% 64.9%; /* Cinza claro para texto muted - Ex: slate-400 */
 
+    --accent: 240 3.7% 15.9%; /* Mesma cor de secondary para accents - Ex: slate-800 */
+    --accent-foreground: 0 0% 98%; /* Branco para contraste com accent */
 
-    --secondary: 215 28% 22%; /* slate-800 (for secondary backgrounds) */
-    --secondary-foreground: 220 13% 91%; /* slate-200 */
+    --destructive: 0 62.8% 30.6%; /* Vermelho escuro para destructive - Ex: red-900 */
+    --destructive-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
 
-    --muted: 215 25% 27%; /* slate-700 (for muted backgrounds or elements) */
-    --muted-foreground: 215 20% 65%; /* slate-400 (for muted text) */
-
-    --accent: 262 83% 58%; /* violet-500 (can be same as primary for highlights) */
-    --accent-foreground: 210 40% 98%; /* slate-50 */
-
-    --destructive: 0 72% 51%; /* A standard red for dark themes */
-    --destructive-foreground: 210 40% 98%; /* slate-50 */
-
-    --border: 215 25% 27%; /* slate-700 */
-    --input: 215 25% 35%; /* slate-600/700 mix, slightly lighter for input fields */
-    --ring: 262 83% 68%; /* Brighter violet for ring */
+    --border: 240 3.7% 15.9%; /* Mesma cor de secondary para bordas - Ex: slate-800 */
+    --input: 240 3.7% 15.9%; /* Mesma cor de secondary para inputs - Ex: slate-800 */
+    --ring: 258.6 90.1% 70.3%; /* Roxo um pouco mais claro para anel de foco */
 
     --radius: 0.75rem; /* rounded-xl */
 
-    /* Chart colors can be kept or updated for dark theme if specified. Not specified, so keep existing. */
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    /* Chart colors */
+    --chart-1: 258.6 90.1% 66.3%; /* Roxo (primary) */
+    --chart-2: 198 93% 60%; /* Ciano (similar ao antigo primary-highlight-to) */
+    --chart-3: 340 82% 60%; /* Rosa/Magenta para contraste */
+    --chart-4: 45 93% 47%; /* Amarelo/Laranja para contraste */
+    --chart-5: 150 70% 45%; /* Verde para contraste */
 
-    /* Sidebar - PRD doesn't specify sidebar. Let's adapt based on main theme. */
-    --sidebar-background: 215 28% 15%; /* Slightly darker than main background */
-    --sidebar-foreground: 220 13% 85%; /* Slightly dimmer than main foreground */
-    --sidebar-primary: 262 83% 58%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 215 28% 25%; /* Darker accent for sidebar */
-    --sidebar-accent-foreground: 220 13% 91%;
-    --sidebar-border: 215 25% 22%;
-    --sidebar-ring: 262 83% 68%;
+
+    /* Sidebar - Manter cores escuras consistentes */
+    --sidebar-background: 240 5.9% 10%; /* Um pouco mais escuro que o background principal - Ex: slate-900 */
+    --sidebar-foreground: 0 0% 98%;   /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    --sidebar-primary: 258.6 90.1% 66.3%; /* Roxo (primary) */
+    --sidebar-primary-foreground: 0 0% 98%; /* Branco */
+    --sidebar-accent: 240 4.8% 18%; /* Cinza um pouco mais claro para acentos na sidebar - Ex: slate-800 */
+    --sidebar-accent-foreground: 0 0% 98%; /* Branco */
+    --sidebar-border: 240 4.8% 15%; /* Borda da sidebar - Ex: slate-800/slate-700 */
+    --sidebar-ring: 258.6 90.1% 70.3%; /* Roxo mais claro para anel de foco */
+
+    /* Gradientes - Usando as cores HSL definidas acima */
+    --primary-highlight-from: var(--primary); /* 258.6 90.1% 66.3% */
+    --primary-highlight-to: 198 93% 60%;   /* Azul Ciano (aproximado de #22D3EE) */
   }
 }
+
 
 @layer base {
   * {
@@ -79,10 +81,11 @@ body {
 
 /* Helper class for gradient text */
 .text-gradient-primary {
-  @apply bg-gradient-to-r from-primary via-purple-500 to-cyan-400 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-[hsl(var(--primary-highlight-from))] via-purple-500 to-[hsl(var(--primary-highlight-to))] bg-clip-text text-transparent;
 }
+
 .button-gradient-primary {
-  @apply bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-400 hover:from-violet-600 hover:to-cyan-500 text-primary-foreground;
+  @apply bg-gradient-to-r from-[hsl(var(--primary-highlight-from))] via-purple-500 to-[hsl(var(--primary-highlight-to))] hover:from-[hsl(var(--primary))] hover:to-cyan-500 text-primary-foreground;
 }
 
 .glow-effect {
