@@ -9,35 +9,35 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, Lightbulb, Activity } from "lucide-react";
+import { AlertTriangle, Lightbulb } from "lucide-react"; // Activity removed as it's not used in new examples
 
 const insightExamples = [
   {
     icon: AlertTriangle,
-    type: "Risco Potencial",
-    title: "Risco de Burnout Detectado",
-    description: "Maria S. demonstrou um volume de commits significativamente alto fora do horário comercial nas últimas 2 semanas, incluindo finais de semana. Considere uma conversa sobre carga de trabalho.",
+    type: "Risco: Fluxo e Competências",
+    title: "Risco de Gargalo",
+    description: "O 'Aging Chart' mostra que a tarefa ENG-102 está parada em 'Revisão' há 5 dias. O responsável, João, é iniciante na tecnologia do sistema, segundo a Matriz de Competências. Sugestão: Oferecer ajuda ou pareamento.",
     color: "text-destructive",
     bgColor: "bg-destructive/10",
     borderColor: "border-destructive/30"
   },
   {
-    icon: Lightbulb,
-    type: "Oportunidade",
-    title: "Oportunidade de Mentoria",
-    description: "João P. completou recentemente módulos de aprendizado em 'Cloud Architecture Avançada' e expressou interesse. Ana L. possui vasta experiência na área e poderia ser uma ótima mentora.",
-     color: "text-primary",
+    icon: Lightbulb, // Using Lightbulb for Insight
+    type: "Insight: Alocação e DEVEX",
+    title: "Causa Raiz de Insatisfação",
+    description: "O time Fênix alocou 45% do tempo para 'Bugs' no último mês. A pesquisa DEVEX para o mesmo time mostrou baixa satisfação com a 'Qualidade do Código'. Sugestão: Priorizar o pagamento de débitos técnicos.",
+    color: "text-primary", // Using primary for positive/actionable insight
     bgColor: "bg-primary/10",
     borderColor: "border-primary/30"
   },
   {
-    icon: Activity,
-    type: "Observação de Processo",
-    title: "Gargalo no Processo de Code Review",
-    description: "O tempo médio para primeira revisão de PRs aumentou 30% na última sprint. Issues relacionadas ao Módulo X parecem ser as mais impactadas. Investigar a complexidade ou disponibilidade de revisores.",
-    color: "text-accent",
-    bgColor: "bg-accent/10",
-    borderColor: "border-accent/30"
+    icon: AlertTriangle,
+    type: "Risco: DEVEX e Pessoal",
+    title: "Risco de Burnout",
+    description: "O 'Activity Heatmap' mostra um padrão de commits tarde da noite para a Maria. Sugestão: Discutir o equilíbrio entre trabalho e vida pessoal na próxima 1:1.",
+    color: "text-destructive",
+    bgColor: "bg-destructive/10",
+    borderColor: "border-destructive/30"
   },
 ];
 

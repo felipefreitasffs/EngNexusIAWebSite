@@ -9,12 +9,13 @@ import {
   BrainCircuit,
   Users,
   Smile,
-  BarChartBig,
+  BarChartBig, // Consider changing this icon if "Excelência em Engenharia" is broader than just charts
   DollarSign,
   Workflow,
   LibraryBig,
   CalendarDays,
   CheckCircle,
+  TrendingUp, // New icon for "Excelência em Engenharia"
   type LucideIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -25,9 +26,9 @@ import { cn } from '@/lib/utils';
 interface FeatureDetail {
   id: string;
   icon: LucideIcon;
-  title: string;
-  highlight: string;
-  features: string[] | string;
+  title: string; // This is for the button
+  highlight: string; // This is for the H3 in the details panel
+  features: string[] | string; // This is for the list in the details panel
   imageSrc: string;
   imageAlt: string;
   imageHint: string;
@@ -58,41 +59,41 @@ const featuresData: FeatureDetail[] = [
     id: "gestao-pessoas",
     icon: Users,
     title: "Gestão 360° de Pessoas e Times",
-    highlight: "Entenda e desenvolva suas equipes de forma completa.",
-    features: ["Perfis detalhados", "Perfis de Times com métricas DORA", "Organograma interativo", "Matriz de Competências"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Perfil+Matriz",
-    imageAlt: "Perfil do Colaborador e Matriz de Competências",
-    imageHint: "employee profile skills matrix",
+    highlight: "Do micro ao macro: gerencie indivíduos e o time com a mesma facilidade.",
+    features: ["Acesse perfis completos", "Prepare suas conversas em um Painel de 1:1s centralizado", "Acompanhe o crescimento de todo o seu time no Painel de PDIs com visão Kanban."],
+    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Painel+PDIs+Kanban",
+    imageAlt: "Painel de PDIs em formato Kanban",
+    imageHint: "kanban board PDI",
   },
   {
     id: "otimizacao-devex",
     icon: Smile,
     title: "Otimização DEVEX",
-    highlight: "Meça e melhore a satisfação e produtividade dos seus times.",
-    features: ["Criação de Pesquisas de Engajamento", "Acompanhamento do Índice DEVEX", "Insights para melhoria"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=DEVEX+Resultados",
-    imageAlt: "Dashboard de Resultados de Pesquisa DEVEX",
-    imageHint: "devex survey results",
+    highlight: "Entenda a experiência do dev com dados qualitativos e quantitativos.",
+    features: ["Combine o sentimento das pesquisas com dados reais", "Visualize o foco do seu time com o Mapa de Calor de Atividade", "Garanta um processo de Code Review saudável e equilibrado."],
+    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Activity+Heatmap",
+    imageAlt: "Mapa de Calor de Atividade (Activity Heatmap)",
+    imageHint: "activity heatmap graph",
   },
   {
-    id: "metricas-dora",
-    icon: BarChartBig,
-    title: "Excelência com Métricas DORA",
-    highlight: "Monitore e aprimore a performance do seu processo de desenvolvimento.",
-    features: ["Acompanhamento da Frequência de Deploy", "Lead Time", "MTTR e Taxa de Falha"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=DORA+Metricas",
-    imageAlt: "Página de Métricas de Engenharia DORA",
-    imageHint: "dora metrics page",
+    id: "metricas-dora", // ID remains for consistency if referred elsewhere, but content changes
+    icon: TrendingUp, // Changed icon to reflect broader "Excelência"
+    title: "Excelência em Engenharia", // Updated Button Title
+    highlight: "Vá além do DORA para a verdadeira excelência.", // Updated H3
+    features: ["Analise o Cycle Time de PRs e Issues", "Identifique gargalos com o Gráfico de Envelhecimento", "Defina metas para seu time", "Compare sua performance com benchmarks da indústria"], // Updated feature list
+    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Aging+Chart", // New image
+    imageAlt: "Gráfico de Envelhecimento (Aging Chart)",
+    imageHint: "aging chart graph",
   },
   {
     id: "controle-custos",
     icon: DollarSign,
-    title: "Visibilidade e Controle de Custos",
-    highlight: "Tenha clareza sobre os investimentos em engenharia.",
-    features: ["Análise de custos de Cloud e Pessoal por time e por sistema"],
-    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=FinOps+Pagina",
-    imageAlt: "Página de FinOps",
-    imageHint: "finops cost page",
+    title: "Visibilidade e Controle de Custos (FinOps)", // Title remains the same, or adjust if needed
+    highlight: "Conecte cada real investido a um resultado de engenharia.", // Updated H3
+    features: ["Entenda para onde vai seu orçamento com a análise de Alocação de Esforço (Features vs. Bugs vs. Débito Técnico)", "Conecte os custos de cloud aos seus sistemas."], // Updated feature list
+    imageSrc: "https://placehold.co/800x500.png/172038/E2E8F0?text=Aloca%C3%A7%C3%A3o+Esfor%C3%A7o", // New image
+    imageAlt: "Gráfico de Alocação de Esforço",
+    imageHint: "effort allocation chart",
   },
   {
     id: "gestao-processos",
@@ -147,7 +148,7 @@ export function InteractiveFeaturesMatrix() {
                 variant="outline"
                 onClick={() => setActiveFeatureId(feature.id)}
                 className={cn(
-                  "flex flex-col items-center justify-center text-center p-3 sm:p-4 w-full h-28 sm:h-32 transition-all duration-300 ease-out rounded-xl overflow-hidden",
+                  "flex flex-col items-center justify-center text-center p-3 sm:p-2.5 w-full h-28 sm:h-32 transition-all duration-300 ease-out rounded-xl overflow-hidden",
                   "bg-slate-800/70 border-slate-700/80 text-slate-300",
                   "focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900",
                   activeFeatureId === feature.id ?
@@ -155,8 +156,8 @@ export function InteractiveFeaturesMatrix() {
                     "hover:bg-slate-700/90 hover:text-slate-100 hover:border-violet-500/50"
                 )}
               >
-                <feature.icon className={cn("h-8 w-8 sm:h-10 mb-2 shrink-0", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
-                <span className="block w-full text-xs sm:text-sm font-medium leading-tight line-clamp-2">{feature.title}</span>
+                <feature.icon className={cn("h-8 w-8 sm:h-9 mb-1.5 shrink-0", activeFeatureId === feature.id ? "text-white" : "text-violet-400")} />
+                <span className="block w-full text-xs leading-snug font-medium line-clamp-2">{feature.title}</span>
               </Button>
             ))}
           </AnimatedSection>

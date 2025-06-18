@@ -28,7 +28,7 @@ export function HeroSection() {
         </AnimatedSection>
         <AnimatedSection as="div" className="mt-6 max-w-2xl" delay="delay-150">
           <p className="text-lg leading-8 text-slate-300 sm:text-xl font-body">
-            EngNexus AI transforma dados dispersos em clareza estratégica, para que você possa liderar times de alta performance.
+            EngNexus AI conecta os pontos entre pessoas, código, fluxo de trabalho e custos, para que você possa parar de gerenciar planilhas e começar a liderar com clareza estratégica.
           </p>
         </AnimatedSection>
         <AnimatedSection as="div" className="mt-10 w-full flex justify-center" delay="delay-300">
@@ -44,14 +44,13 @@ export function HeroSection() {
           <div className="aspect-video bg-slate-800/50 rounded-xl shadow-2xl border border-slate-700 flex items-center justify-center">
             <Image
               src="https://placehold.co/800x450.png/172038/E2E8F0?text=Demonstra%C3%A7%C3%A3o+da+Interface+EngNexus+AI"
-              alt="EngNexus AI UI Showcase"
+              alt="Demonstração da Interface EngNexus AI"
               width={800}
               height={450}
               className="rounded-lg object-cover"
               data-ai-hint="UI animation platform"
               priority
             />
-            {/* <p className="text-slate-400">EngNexus AI UI Video/Lottie Animation Here</p> */}
           </div>
         </AnimatedSection>
       </div>
