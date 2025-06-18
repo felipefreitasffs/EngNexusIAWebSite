@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, Lightbulb } from "lucide-react"; // Activity removed as it's not used in new examples
+import { AlertTriangle, Lightbulb } from "lucide-react";
 
 const insightExamples = [
   {
@@ -22,11 +22,11 @@ const insightExamples = [
     borderColor: "border-destructive/30"
   },
   {
-    icon: Lightbulb, // Using Lightbulb for Insight
+    icon: Lightbulb,
     type: "Insight: Alocação e DEVEX",
     title: "Causa Raiz de Insatisfação",
     description: "O time Fênix alocou 45% do tempo para 'Bugs' no último mês. A pesquisa DEVEX para o mesmo time mostrou baixa satisfação com a 'Qualidade do Código'. Sugestão: Priorizar o pagamento de débitos técnicos.",
-    color: "text-primary", // Using primary for positive/actionable insight
+    color: "text-primary",
     bgColor: "bg-primary/10",
     borderColor: "border-primary/30"
   },

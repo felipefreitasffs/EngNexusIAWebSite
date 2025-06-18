@@ -48,7 +48,7 @@ export function HeroSection() {
               width={800}
               height={450}
               className="rounded-lg object-cover"
-              data-ai-hint="UI animation platform"
+              data-ai-hint="dashboard interface"
               priority
             />
           </div>

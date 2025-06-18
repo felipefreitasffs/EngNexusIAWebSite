@@ -9,13 +9,12 @@ import {
   BrainCircuit,
   Users,
   Smile,
-  BarChartBig, 
   DollarSign,
   Workflow,
   LibraryBig,
   CalendarDays,
   CheckCircle,
-  TrendingUp, 
+  TrendingUp,
   type LucideIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,9 +25,9 @@ import { cn } from '@/lib/utils';
 interface FeatureDetail {
   id: string;
   icon: LucideIcon;
-  title: string; 
-  highlight: string; 
-  features: string[] | string; 
+  title: string;
+  highlight: string;
+  features: string[] | string;
   imageSrc: string;
   imageAlt: string;
   imageHint: string;
@@ -43,7 +42,7 @@ const featuresData: FeatureDetail[] = [
     features: ["KPIs personalizáveis (DEVEX, Saúde do Deploy, Custos)", "Central de Ações", "Insights proativos de IA"],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Dashboard+IA",
     imageAlt: "Painel de controle inteligente EngNexus AI com KPIs e insights de IA",
-    imageHint: "dashboard ai",
+    imageHint: "dashboard analytics",
   },
   {
     id: "copiloto-ia",
@@ -53,7 +52,7 @@ const featuresData: FeatureDetail[] = [
     features: ["Geração automática de títulos/descrições", "Análise de contexto", "Suporte à tradução"],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=JSON+Insight",
     imageAlt: "Demonstração do copiloto de IA EngNexus AI gerando insights em formato JSON",
-    imageHint: "json insight card animation",
+    imageHint: "AI insights",
   },
   {
     id: "gestao-pessoas",
@@ -63,7 +62,7 @@ const featuresData: FeatureDetail[] = [
     features: ["Acesse perfis completos", "Prepare suas conversas em um Painel de 1:1s centralizado", "Acompanhe o crescimento de todo o seu time no Painel de PDIs com visão Kanban."],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Painel+PDIs+Kanban",
     imageAlt: "Painel de Planos de Desenvolvimento Individuais (PDIs) em formato Kanban no EngNexus AI",
-    imageHint: "kanban board PDI",
+    imageHint: "PDI kanban",
   },
   {
     id: "otimizacao-devex",
@@ -73,27 +72,27 @@ const featuresData: FeatureDetail[] = [
     features: ["Combine o sentimento das pesquisas com dados reais", "Visualize o foco do seu time com o Mapa de Calor de Atividade", "Garanta um processo de Code Review saudável e equilibrado."],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Activity+Heatmap",
     imageAlt: "Mapa de Calor de Atividade (Activity Heatmap) mostrando padrões de trabalho da equipe no EngNexus AI",
-    imageHint: "activity heatmap graph",
+    imageHint: "activity heatmap",
   },
   {
-    id: "metricas-dora", 
-    icon: TrendingUp, 
-    title: "Excelência em Engenharia", 
-    highlight: "Vá além do DORA para a verdadeira excelência.", 
-    features: ["Analise o Cycle Time de PRs e Issues", "Identifique gargalos com o Gráfico de Envelhecimento", "Defina metas para seu time", "Compare sua performance com benchmarks da indústria"], 
-    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Aging+Chart", 
+    id: "excelencia-engenharia",
+    icon: TrendingUp,
+    title: "Excelência em Engenharia",
+    highlight: "Vá além do DORA para a verdadeira excelência.",
+    features: ["Analise o Cycle Time de PRs e Issues", "Identifique gargalos com o Gráfico de Envelhecimento", "Defina metas para seu time", "Compare sua performance com benchmarks da indústria"],
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Aging+Chart",
     imageAlt: "Gráfico de Envelhecimento (Aging Chart) para identificar gargalos no fluxo de trabalho no EngNexus AI",
-    imageHint: "aging chart graph",
+    imageHint: "aging chart",
   },
   {
     id: "controle-custos",
     icon: DollarSign,
-    title: "Visibilidade e Controle de Custos (FinOps)", 
-    highlight: "Conecte cada real investido a um resultado de engenharia.", 
-    features: ["Entenda para onde vai seu orçamento com a análise de Alocação de Esforço (Features vs. Bugs vs. Débito Técnico)", "Conecte os custos de cloud aos seus sistemas."], 
-    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Aloca%C3%A7%C3%A3o+Esfor%C3%A7o", 
+    title: "Visibilidade e Controle de Custos (FinOps)",
+    highlight: "Conecte cada real investido a um resultado de engenharia.",
+    features: ["Entenda para onde vai seu orçamento com a análise de Alocação de Esforço (Features vs. Bugs vs. Débito Técnico)", "Conecte os custos de cloud aos seus sistemas."],
+    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Aloca%C3%A7%C3%A3o+Esfor%C3%A7o",
     imageAlt: "Gráfico de Alocação de Esforço mostrando distribuição de trabalho em Features, Bugs e Débito Técnico no EngNexus AI",
-    imageHint: "effort allocation chart",
+    imageHint: "effort allocation",
   },
   {
     id: "gestao-processos",
@@ -103,7 +102,7 @@ const featuresData: FeatureDetail[] = [
     features: ["Fluxos de trabalho personalizáveis para RH e TI", "Redução do tempo de onboarding", "Garantia de consistência em processos chave"],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Onboarding+Fluxo",
     imageAlt: "Módulo de gestão de processos de onboarding de novos colaboradores no EngNexus AI",
-    imageHint: "onboarding process workflow",
+    imageHint: "process workflow",
   },
   {
     id: "catalogo-sistemas",
@@ -113,7 +112,7 @@ const featuresData: FeatureDetail[] = [
     features: ["Registro de sistemas com dono, tecnologias e links para documentação"],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Catalogo+Sistemas",
     imageAlt: "Página do Catálogo de Sistemas centralizado no EngNexus AI com detalhes de cada sistema",
-    imageHint: "system catalog page",
+    imageHint: "system catalog",
   },
   {
     id: "gestao-ausencias",
@@ -123,7 +122,7 @@ const featuresData: FeatureDetail[] = [
     features: ["Calendário de ausências", "Fluxo de solicitação e aprovação de férias e day-offs"],
     imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=Calendario+Ausencias",
     imageAlt: "Calendário de Ausências do Time para planejamento e visibilidade no EngNexus AI",
-    imageHint: "team absence calendar",
+    imageHint: "team calendar",
   },
 ];
 
@@ -141,7 +140,7 @@ export function InteractiveFeaturesMatrix() {
         </AnimatedSection>
 
         <div className="grid md:grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)] gap-8 md:gap-12 items-start">
-          <AnimatedSection as="div" className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 sticky top-24" role="tablist" aria-orientation="vertical">
+          <AnimatedSection as="div" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 sticky top-24" role="tablist" aria-orientation="vertical">
             {featuresData.map((feature) => (
               <Button
                 key={feature.id}
@@ -168,9 +167,9 @@ export function InteractiveFeaturesMatrix() {
 
           <AnimatedSection
             as="div"
-            key={activeFeature.id} 
-            className="transition-opacity duration-500 ease-in-out" 
-            initialClassName="opacity-0 translate-y-5" 
+            key={activeFeature.id}
+            className="transition-opacity duration-500 ease-in-out"
+            initialClassName="opacity-0 translate-y-5"
             animateClassName="opacity-100 translate-y-0"
             role="tabpanel"
             id={`feature-panel-${activeFeature.id}`}
@@ -184,7 +183,7 @@ export function InteractiveFeaturesMatrix() {
                 height={500}
                 className="w-full object-cover aspect-[16/10]"
                 data-ai-hint={activeFeature.imageHint}
-                priority={activeFeature.id === featuresData[0].id} 
+                priority={activeFeature.id === featuresData[0].id}
               />
               <CardContent className="p-6 space-y-3">
                 <h3 className="text-xl sm:text-2xl font-bold text-gradient-primary font-headline">
