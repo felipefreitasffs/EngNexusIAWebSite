@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,53 +9,53 @@ body {
 
 @layer base {
   :root {
-    --background: 240 5.9% 10%; /* Cinza escuro - Ex: slate-900 */
-    --foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    --background: 225 7% 11%; /* Cinza azulado escuro */
+    --foreground: 0 0% 98%; /* Branco (ou cinza muito claro) */
 
-    --card: 240 4.8% 12%; /* Cinza um pouco mais claro para cards - Ex: slate-800/slate-850 */
-    --card-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    --card: 225 6% 13%; /* Cinza azulado um pouco mais claro para cards */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 240 4.8% 10%; /* Mesmo tom do background para popovers, ou ligeiramente mais escuro que card - Ex: slate-900 */
-    --popover-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    --popover: 225 7% 9%; /* Cinza azulado para popovers, pode ser igual ou mais escuro que o fundo */
+    --popover-foreground: 0 0% 98%;
     
     --primary: 258.6 90.1% 66.3%; /* Roxo #7C3AED (HSL) */
-    --primary-foreground: 0 0% 98%; /* Branco para contraste com primário */
+    --primary-foreground: 0 0% 98%;
     
-    --secondary: 240 3.7% 15.9%; /* Cinza para bordas/fundos sutis - Ex: slate-800 */
-    --secondary-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    --secondary: 225 5% 17%; /* Cinza azulado para bordas/fundos sutis */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%; /* Mesma cor de secondary para fundos de elementos muted - Ex: slate-800 */
-    --muted-foreground: 240 5% 64.9%; /* Cinza claro para texto muted - Ex: slate-400 */
+    --muted: 225 5% 17%; /* Mesma cor de secondary para fundos de elementos muted */
+    --muted-foreground: 225 6% 60%; /* Cinza azulado claro para texto muted */
 
-    --accent: 240 3.7% 15.9%; /* Mesma cor de secondary para accents - Ex: slate-800 */
-    --accent-foreground: 0 0% 98%; /* Branco para contraste com accent */
+    --accent: 225 5% 17%; /* Pode ser ajustado para uma cor de destaque diferente se necessário */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%; /* Vermelho escuro para destructive - Ex: red-900 */
-    --destructive-foreground: 0 0% 98%; /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    --destructive: 0 62.8% 30.6%; /* Vermelho escuro para destructive */
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%; /* Mesma cor de secondary para bordas - Ex: slate-800 */
-    --input: 240 3.7% 15.9%; /* Mesma cor de secondary para inputs - Ex: slate-800 */
+    --border: 225 5% 17%; /* Mesma cor de secondary para bordas */
+    --input: 225 5% 17%; /* Mesma cor de secondary para inputs */
     --ring: 258.6 90.1% 70.3%; /* Roxo um pouco mais claro para anel de foco */
 
     --radius: 0.75rem; /* rounded-xl */
 
     /* Chart colors */
     --chart-1: 258.6 90.1% 66.3%; /* Roxo (primary) */
-    --chart-2: 198 93% 60%; /* Ciano (similar ao antigo primary-highlight-to) */
-    --chart-3: 340 82% 60%; /* Rosa/Magenta para contraste */
-    --chart-4: 45 93% 47%; /* Amarelo/Laranja para contraste */
-    --chart-5: 150 70% 45%; /* Verde para contraste */
+    --chart-2: 198 93% 60%; /* Ciano */
+    --chart-3: 340 82% 60%; /* Rosa/Magenta */
+    --chart-4: 45 93% 47%; /* Amarelo/Laranja */
+    --chart-5: 150 70% 45%; /* Verde */
 
 
-    /* Sidebar - Manter cores escuras consistentes */
-    --sidebar-background: 240 5.9% 10%; /* Cor de fundo da sidebar, igual ao principal - Ex: slate-900 */
-    --sidebar-foreground: 0 0% 98%;   /* Branco (ou cinza muito claro) - Ex: slate-50 */
+    /* Sidebar - Manter cores escuras consistentes com o novo tom azulado */
+    --sidebar-background: 225 7% 11%; /* Cor de fundo da sidebar, igual ao principal */
+    --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 258.6 90.1% 66.3%; /* Roxo (primary) */
-    --sidebar-primary-foreground: 0 0% 98%; /* Branco */
-    --sidebar-accent: 240 4.8% 18%; /* Cinza um pouco mais claro para acentos na sidebar - Ex: slate-800 */
-    --sidebar-accent-foreground: 0 0% 98%; /* Branco */
-    --sidebar-border: 240 4.8% 15%; /* Borda da sidebar - Ex: slate-800/slate-700 */
-    --sidebar-ring: 258.6 90.1% 70.3%; /* Roxo mais claro para anel de foco */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 225 6% 20%; /* Cinza azulado um pouco mais claro para acentos na sidebar */
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 225 6% 17%; /* Borda da sidebar com tom azulado */
+    --sidebar-ring: 258.6 90.1% 70.3%;
 
     /* Gradientes - Usando as cores HSL definidas acima */
     --primary-highlight-from: var(--primary); /* 258.6 90.1% 66.3% */
@@ -100,4 +101,3 @@ body {
   /* position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; */
   /* Add particle animation styles here */
 }
-
