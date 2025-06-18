@@ -1,8 +1,10 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -23,13 +26,21 @@ const FormSchema = z.object({
 });
 
 interface EmailCaptureFormProps {
-  buttonText: string;
+  buttonText: ReactNode;
+  buttonLoadingText?: ReactNode;
   formId: string;
   inputClassName?: string;
   buttonClassName?: string;
 }
 
-export function EmailCaptureForm({ buttonText, formId, inputClassName, buttonClassName }: EmailCaptureFormProps) {
+export function EmailCaptureForm({ 
+  buttonText, 
+  buttonLoadingText = "Enviando...",
+  formId, 
+  inputClassName, 
+  buttonClassName 
+}: EmailCaptureFormProps) {
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -37,15 +48,38 @@ export function EmailCaptureForm({ buttonText, formId, inputClassName, buttonCla
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("Email captured:", data.email);
-    // For dark theme, toast styles should adapt via globals.css or specific variant
-    toast({
-      title: "Inscrição Recebida!",
-      description: `Obrigado por seu interesse! Adicionamos ${data.email} à nossa lista de acesso antecipado.`,
-      className: "bg-slate-800 border-slate-700 text-slate-200", // Example of direct styling for dark toast
-    });
-    form.reset();
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/capture-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Ocorreu um erro. Tente novamente.");
+      }
+
+      toast({
+        title: "Inscrição Recebida!",
+        description: result.message,
+      });
+      form.reset();
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Falha ao enviar e-mail. Verifique sua conexão.";
+      toast({
+        variant: "destructive",
+        title: "Erro na Inscrição",
+        description: errorMessage,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -67,18 +101,25 @@ export function EmailCaptureForm({ buttonText, formId, inputClassName, buttonCla
                     inputClassName
                   )}
                   aria-label="Endereço de e-mail"
+                  disabled={isLoading}
                 />
               </FormControl>
-              <FormMessage className="text-red-400"/>
+              <FormMessage className="text-red-400 text-left"/>
             </FormItem>
           )}
         />
-        <Button type="submit" size="lg" className={cn(
+        <Button 
+          type="submit" 
+          size="lg" 
+          className={cn(
             "w-full sm:w-auto h-12 text-base font-semibold",
             "button-gradient-primary button-glow-hover shadow-lg",
             buttonClassName
-          )}>
-          {buttonText}
+          )}
+          disabled={isLoading}
+        >
+          {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+          {isLoading ? buttonLoadingText : buttonText}
         </Button>
       </form>
     </Form>
