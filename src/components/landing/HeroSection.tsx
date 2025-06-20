@@ -47,7 +47,7 @@ export function HeroSection() {
               alt="Demonstração da Interface EngNexus AI"
               width={800}
               height={450}
-              className="rounded-lg object-cover"
+              className="rounded-lg"
               data-ai-hint="dashboard interface"
               priority
             />

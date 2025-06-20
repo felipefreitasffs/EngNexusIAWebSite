@@ -48,7 +48,7 @@ export function AIVisionSection() {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <AnimatedSection as="div" className="flex justify-center md:justify-start">
             <Image
-              src="https://placehold.co/500x500.png/172038/8B5CF6?text=Nexo+de+Dados"
+              src="/images/engnexusia2.jpeg"
               alt="Nexo de Dados Inteligente - Abstração de IA"
               width={500}
               height={500}
