@@ -60,7 +60,7 @@ const featuresData: FeatureDetail[] = [
     title: "Gestão 360° de Pessoas e Times",
     highlight: "Do micro ao macro: gerencie indivíduos e o time com a mesma facilidade.",
     features: ["Navegue por perfis 360° que unificam todo o contexto do colaborador", "Prepare e conduza 1:1s mais estratégicas com um histórico completo", "Impulsione o crescimento de carreira com Planos de Desenvolvimento (PDIs) visuais", "Identifique talentos e gaps de conhecimento com uma Matriz de Competências dinâmica"],
-    imageSrc: "/images/engnexusia1.gif",
+    imageSrc: "/images/engnexusia6.gif",
     imageAlt: "Painel de Planos de Desenvolvimento Individuais (PDIs) em formato Kanban no EngNexus AI",
     imageHint: "PDI kanban",
   },
@@ -181,7 +181,7 @@ export function InteractiveFeaturesMatrix() {
                 alt={activeFeature.imageAlt}
                 width={800}
                 height={500}
-                className="w-full aspect-[16/10]"
+                className="w-full"
                 data-ai-hint={activeFeature.imageHint}
                 priority={activeFeature.id === featuresData[0].id}
               />
