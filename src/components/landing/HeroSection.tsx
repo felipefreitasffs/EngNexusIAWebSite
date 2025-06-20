@@ -39,14 +39,14 @@ export function HeroSection() {
             buttonClassName="button-gradient-primary button-glow-hover shadow-lg"
           />
         </AnimatedSection>
-        <AnimatedSection as="div" className="mt-16 w-full max-w-4xl" delay="delay-450">
+        <AnimatedSection as="div" className="mt-16 w-full max-w-5xl" delay="delay-450">
           {/* Placeholder for Video/Lottie Animation */}
           <div className="aspect-video bg-slate-800/50 rounded-xl shadow-2xl border border-slate-700 flex items-center justify-center">
             <Image
               src="/images/engnexusia1.png"
               alt="Demonstração da Interface EngNexus AI"
-              width={800}
-              height={450}
+              width={960}
+              height={540}
               className="rounded-lg"
               data-ai-hint="dashboard interface"
               priority
