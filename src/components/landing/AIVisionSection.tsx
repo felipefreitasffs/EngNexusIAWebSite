@@ -92,7 +92,7 @@ export function AIVisionSection() {
               alt="Esfera de rede neural brilhante simbolizando a capacidade da EngNexus AI de conectar diversos pontos de dados e gerar insights profundos."
               width={600}
               height={600}
-              className="rounded-xl shadow-2xl object-contain opacity-80"
+              className="rounded-xl shadow-2xl object-contain radial-image-mask"
               data-ai-hint="AI network"
             />
           </AnimatedSection>

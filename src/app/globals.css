@@ -9,32 +9,32 @@ body {
 
 @layer base {
   :root {
-    --background: 225 20% 18%; /* Cinza azulado um pouco mais claro e saturado */
+    --background: 225 25% 22%; /* HSL: Azul-acinzentado escuro, um pouco mais claro e mais azul */
     --foreground: 0 0% 98%; /* Branco (ou cinza muito claro) */
 
-    --card: 225 18% 20%; /* Cinza azulado para cards, ligeiramente mais claro que o fundo */
+    --card: 225 22% 25%; /* HSL: Azul-acinzentado para cards, ligeiramente mais claro que o fundo */
     --card-foreground: 0 0% 98%;
 
-    --popover: 225 20% 16%; /* Cinza azulado para popovers, ligeiramente mais escuro que o fundo */
+    --popover: 225 25% 20%; /* HSL: Azul-acinzentado para popovers, ligeiramente mais escuro que o fundo */
     --popover-foreground: 0 0% 98%;
     
     --primary: 258.6 90.1% 66.3%; /* Roxo #7C3AED (HSL) */
     --primary-foreground: 0 0% 98%;
     
-    --secondary: 225 15% 24%; /* Cinza azulado mais claro para bordas/fundos sutis */
+    --secondary: 225 20% 30%; /* HSL: Azul-acinzentado mais claro para bordas/fundos sutis */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 225 15% 24%; /* Mesma cor de secondary para fundos de elementos muted */
-    --muted-foreground: 225 10% 65%; /* Cinza azulado mais claro para texto muted */
+    --muted: 225 20% 30%; /* HSL: Mesma cor de secondary para fundos de elementos muted */
+    --muted-foreground: 225 15% 70%; /* HSL: Azul-acinzentado mais claro para texto muted */
 
-    --accent: 225 15% 24%; /* Pode ser ajustado para uma cor de destaque diferente se necessário */
+    --accent: 225 20% 30%; /* HSL: Pode ser ajustado para uma cor de destaque diferente se necessário */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%; /* Vermelho escuro para destructive */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 225 15% 24%; /* Mesma cor de secondary para bordas */
-    --input: 225 15% 24%; /* Mesma cor de secondary para inputs */
+    --border: 225 20% 30%; /* HSL: Mesma cor de secondary para bordas */
+    --input: 225 20% 30%; /* HSL: Mesma cor de secondary para inputs */
     --ring: 258.6 90.1% 70.3%; /* Roxo um pouco mais claro para anel de foco */
 
     --radius: 0.75rem; /* rounded-xl */
@@ -48,13 +48,13 @@ body {
 
 
     /* Sidebar - Cores escuras com tom azulado mais pronunciado */
-    --sidebar-background: 225 20% 18%; /* Cor de fundo da sidebar, igual ao principal */
+    --sidebar-background: 225 25% 22%; /* HSL: Cor de fundo da sidebar, igual ao principal */
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 258.6 90.1% 66.3%; /* Roxo (primary) */
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 225 18% 26%; /* Cinza mais azulado para acentos na sidebar */
+    --sidebar-accent: 225 22% 32%; /* HSL: Cinza mais azulado para acentos na sidebar */
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 225 15% 24%; /* Borda da sidebar com tom azulado consistente */
+    --sidebar-border: 225 20% 30%; /* HSL: Borda da sidebar com tom azulado consistente */
     --sidebar-ring: 258.6 90.1% 70.3%;
 
     /* Gradientes - Usando as cores HSL definidas acima */
@@ -100,4 +100,9 @@ body {
 .particle-background {
   /* position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; */
   /* Add particle animation styles here */
+}
+
+.radial-image-mask {
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0) 80%);
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0) 80%);
 }
