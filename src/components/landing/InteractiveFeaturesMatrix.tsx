@@ -50,7 +50,7 @@ const featuresData: FeatureDetail[] = [
     title: "Copiloto de IA para Líderes",
     highlight: "Assistência inteligente para otimizar a gestão e identificar oportunidades.",
     features: ["Correlação entre métricas de entrega e saúde do time", "Identificação de gargalos de processo com base em múltiplas fontes", "Análise de padrões de colaboração e bem-estar"],
-    imageSrc: "https://placehold.co/800x500.png/1E293B/E2E8F0?text=JSON+Insight",
+    imageSrc: "/images/engnexusia26.png",
     imageAlt: "Demonstração do copiloto de IA EngNexus AI gerando insights em formato JSON",
     imageHint: "AI insights",
   },
