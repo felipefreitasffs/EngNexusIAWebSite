@@ -51,7 +51,7 @@ export function AIVisionSection() {
               EngNexus AI não apenas mostra dados. <span className="text-gradient-primary">Ele pensa com você.</span>
             </h2>
             <p className="text-lg text-muted-foreground font-body">
-              Nossos algoritmos analisam sinais de performance, comunicação e processos para entregar insights que você não encontrará em nenhum outro lugar. Antecipe riscos, descubra oportunidades e otimize gargalos com a inteligência proativa da EngNexus AI.
+              Nossos algoritmos analisam sinais de performance, comunicação e processos para entregar insights que você não encontrará em nenhum outro lugar. Antecipe riscos, descobra oportunidades e otimize gargalos com a inteligência proativa da EngNexus AI.
             </p>
             <Carousel
               opts={{
@@ -90,9 +90,9 @@ export function AIVisionSection() {
             <Image
               src="/images/engnexusia2.jpeg"
               alt="Esfera de rede neural brilhante simbolizando a capacidade da EngNexus AI de conectar diversos pontos de dados e gerar insights profundos."
-              width={500}
-              height={500}
-              className="rounded-xl shadow-2xl object-contain"
+              width={600}
+              height={600}
+              className="rounded-xl shadow-2xl object-contain opacity-80"
               data-ai-hint="AI network"
             />
           </AnimatedSection>
