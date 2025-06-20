@@ -31,6 +31,7 @@ export function FinalCtaSection() {
             inputClassName="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 focus:ring-primary-highlight-from"
             textareaClassName="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 focus:ring-primary-highlight-from"
             buttonClassName="button-gradient-primary button-glow-hover shadow-lg"
+            successRedirectUrl="/thank-you-suggestion"
           />
         </AnimatedSection>
       </div>

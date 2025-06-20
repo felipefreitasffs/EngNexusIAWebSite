@@ -37,6 +37,7 @@ export function HeroSection() {
             emailPlaceholder="seu.email@empresa.tech"
             inputClassName="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 focus:ring-primary-highlight-from"
             buttonClassName="button-gradient-primary button-glow-hover shadow-lg"
+            successRedirectUrl="/thank-you-early-access"
           />
         </AnimatedSection>
         <AnimatedSection as="div" className="mt-16 w-full max-w-5xl" delay="delay-450">
