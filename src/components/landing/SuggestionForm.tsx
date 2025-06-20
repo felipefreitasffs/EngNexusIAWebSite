@@ -17,9 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-// import { toast } from "@/hooks/use-toast"; // Removido, Formspree lida com confirmação
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react"; // Pode ser removido se não houver estado de loading controlado aqui
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -34,9 +32,8 @@ const FormSchema = z.object({
 
 interface SuggestionFormProps {
   buttonText: ReactNode;
-  // buttonLoadingText?: ReactNode; // Removido
   formId: string;
-  formSpreeEndpoint: string; // Nova prop para o endpoint do Formspree
+  formSpreeEndpoint: string; 
   inputClassName?: string;
   textareaClassName?: string;
   buttonClassName?: string;
@@ -58,7 +55,6 @@ export function SuggestionForm({
   suggestionLabel = "Sua Sugestão",
   suggestionPlaceholder = "Descreva sua ideia ou sugestão para o EngNexus AI aqui...",
 }: SuggestionFormProps) {
-  // const [isLoading, setIsLoading] = useState(false); // Removido
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -67,20 +63,17 @@ export function SuggestionForm({
     },
   });
 
-  // A função onSubmit que fazia o fetch foi removida.
-  // O formulário agora fará um submit HTML padrão para o endpoint do Formspree.
-
   return (
     <Form {...form}>
       <form
-        action={formSpreeEndpoint} // Aponta para o endpoint do Formspree
-        method="POST" // Método POST para Formspree
+        action={formSpreeEndpoint} 
+        method="POST" 
         id={formId}
         className="w-full max-w-md space-y-6"
       >
         <FormField
           control={form.control}
-          name="email" // Nome do campo para Formspree
+          name="email" 
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor={`${formId}-email`} className="text-slate-300">{emailLabel}</FormLabel>
@@ -95,7 +88,6 @@ export function SuggestionForm({
                     inputClassName
                   )}
                   aria-label="Endereço de e-mail"
-                  // disabled={isLoading} // Removido
                 />
               </FormControl>
               <FormMessage className="text-red-400 text-left"/>
@@ -104,7 +96,7 @@ export function SuggestionForm({
         />
         <FormField
           control={form.control}
-          name="suggestion" // Nome do campo para Formspree
+          name="suggestion" 
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor={`${formId}-suggestion`} className="text-slate-300">{suggestionLabel}</FormLabel>
@@ -118,18 +110,14 @@ export function SuggestionForm({
                     textareaClassName
                   )}
                   aria-label="Sua sugestão"
-                  // disabled={isLoading} // Removido
                 />
               </FormControl>
               <FormMessage className="text-red-400 text-left"/>
             </FormItem>
           )}
         />
-        {/* Campo oculto para Formspree, se quiser redirecionar para uma página de agradecimento customizada */}
-        {/* <input type="hidden" name="_next" value="URL_DA_SUA_PAGINA_DE_OBRIGADO" /> */}
-        {/* Campo para assunto do e-mail que o Formspree envia */}
+        <input type="hidden" name="_next" value="/thank-you-suggestion" />
         <input type="hidden" name="_subject" value="Nova Sugestão Recebida - EngNexus AI!" />
-
         <Button
           type="submit"
           size="lg"
@@ -138,10 +126,7 @@ export function SuggestionForm({
             "button-gradient-primary button-glow-hover shadow-lg",
             buttonClassName
           )}
-          // disabled={isLoading} // Removido
         >
-          {/* {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />} // Removido */}
-          {/* {isLoading ? buttonLoadingText : buttonText} // Modificado */}
           {buttonText}
         </Button>
       </form>
