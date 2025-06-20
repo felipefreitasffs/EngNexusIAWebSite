@@ -46,16 +46,6 @@ export function AIVisionSection() {
     <section className="w-full py-16 md:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <AnimatedSection as="div" className="flex justify-center md:justify-start">
-            <Image
-              src="/images/engnexusia2.jpeg"
-              alt="Visualização de uma rede neural brilhante dentro de uma esfera, simbolizando a inteligência artificial do EngNexus AI e sua capacidade de conectar dados."
-              width={500}
-              height={500}
-              className="rounded-xl shadow-2xl object-contain"
-              data-ai-hint="AI network"
-            />
-          </AnimatedSection>
           <AnimatedSection as="div" className="space-y-6" delay="delay-150">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
               EngNexus AI não apenas mostra dados. <span className="text-gradient-primary">Ele pensa com você.</span>
@@ -95,6 +85,16 @@ export function AIVisionSection() {
               <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
               <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
             </Carousel>
+          </AnimatedSection>
+          <AnimatedSection as="div" className="flex justify-center md:justify-end">
+            <Image
+              src="/images/engnexusia2.jpeg"
+              alt="Esfera de rede neural brilhante simbolizando a capacidade da EngNexus AI de conectar diversos pontos de dados e gerar insights profundos."
+              width={500}
+              height={500}
+              className="rounded-xl shadow-2xl object-contain"
+              data-ai-hint="AI network"
+            />
           </AnimatedSection>
         </div>
       </div>
