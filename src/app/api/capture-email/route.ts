@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 
 const SubmissionSchema = z.object({
   email: z.string().email({ message: "Por favor, insira um endereço de e-mail válido." }),
-  suggestion: z.string().min(10, { message: "Sua sugestão precisa ter pelo menos 10 caracteres." }).max(1000, { message: "Sua sugestão não pode exceder 1000 caracteres." }),
+  suggestion: z.string().min(10, { message: "Sua sugestão precisa ter pelo menos 10 caracteres." }).max(1000, { message: "Sua sugestão não pode exceder 1000 caracteres." }).optional(),
 });
 
 const TARGET_EMAIL_ADDRESS = process.env.TARGET_EMAIL_ADDRESS || 'felipefreitas.ffs@gmail.com';
@@ -29,24 +29,44 @@ if (GMAIL_USER && GMAIL_PASSWORD) {
   console.warn("Credenciais GMAIL_APP_USER ou GMAIL_APP_PASSWORD não configuradas. O envio de e-mails real não funcionará. Simulando envio.");
 }
 
-async function sendSuggestionEmail(to: string, fromEmail: string, userEmail: string, suggestion: string) {
+async function sendNotificationEmail(to: string, fromEmail: string, userEmail: string, suggestion?: string) {
   if (!transporter) {
     console.error("Tentativa de enviar e-mail sem o transporter do Nodemailer configurado (credenciais ausentes). Simulação ativada.");
-    console.log(`Simulação de envio de e-mail de sugestão: Para: ${to}, De: ${fromEmail}, Email do Usuário: ${userEmail}, Sugestão: ${suggestion}`);
+    let logMessage = `Simulação de envio de e-mail: Para: ${to}, De: ${fromEmail}, Email do Usuário: ${userEmail}`;
+    if (suggestion) {
+      logMessage += `, Sugestão: ${suggestion}`;
+    } else {
+      logMessage += `, Interesse para acesso antecipado.`;
+    }
+    console.log(logMessage);
     return Promise.resolve();
   }
 
-  const subject = `Nova Sugestão Recebida - ${process.env.NEXT_PUBLIC_APP_NAME || 'EngNexus AI'}`;
-  const textBody = `Um usuário enviou uma sugestão:\n\nE-mail: ${userEmail}\nSugestão:\n${suggestion}`;
-  const htmlBody = `
-    <p>Um usuário enviou uma sugestão através do formulário da landing page ${process.env.NEXT_PUBLIC_APP_NAME || 'EngNexus AI'}.</p>
-    <p><strong>E-mail do Usuário:</strong> ${userEmail}</p>
-    <p><strong>Sugestão:</strong></p>
-    <p>${suggestion.replace(/\n/g, '<br>')}</p>
-  `;
+  const appName = process.env.NEXT_PUBLIC_APP_NAME || 'EngNexus AI';
+  let subject: string;
+  let textBody: string;
+  let htmlBody: string;
+
+  if (suggestion) {
+    subject = `Nova Sugestão Recebida - ${appName}`;
+    textBody = `Um usuário enviou uma sugestão:\n\nE-mail: ${userEmail}\nSugestão:\n${suggestion}`;
+    htmlBody = `
+      <p>Um usuário enviou uma sugestão através do formulário da landing page ${appName}.</p>
+      <p><strong>E-mail do Usuário:</strong> ${userEmail}</p>
+      <p><strong>Sugestão:</strong></p>
+      <p>${suggestion.replace(/\n/g, '<br>')}</p>
+    `;
+  } else {
+    subject = `Novo Lead para Acesso Antecipado - ${appName}`;
+    textBody = `Um usuário registrou interesse para acesso antecipado:\n\nE-mail: ${userEmail}`;
+    htmlBody = `
+      <p>Um usuário registrou interesse para acesso antecipado na landing page ${appName}.</p>
+      <p><strong>E-mail do Usuário:</strong> ${userEmail}</p>
+    `;
+  }
 
   const mailOptions = {
-    from: `"${process.env.NEXT_PUBLIC_APP_NAME || 'EngNexus AI'} Feedback" <${GMAIL_USER}>`,
+    from: `"${appName} Notificações" <${GMAIL_USER}>`,
     to: to,
     subject: subject,
     text: textBody,
@@ -55,10 +75,10 @@ async function sendSuggestionEmail(to: string, fromEmail: string, userEmail: str
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`E-mail de sugestão enviado para ${to} via Nodemailer (Gmail SMTP) com sucesso.`);
+    console.log(`E-mail de notificação enviado para ${to} via Nodemailer (Gmail SMTP) com sucesso.`);
   } catch (error: any) {
-    console.error("Erro ao enviar e-mail de sugestão via Nodemailer (Gmail SMTP):", error);
-    throw new Error("Falha ao enviar o e-mail de sugestão através do serviço.");
+    console.error("Erro ao enviar e-mail de notificação via Nodemailer (Gmail SMTP):", error);
+    throw new Error("Falha ao enviar o e-mail de notificação através do serviço.");
   }
 }
 
@@ -73,35 +93,47 @@ export async function POST(request: NextRequest) {
       if (firstError) {
         message = `${firstError.path.join('.')}: ${firstError.message}`;
       }
-      
       return NextResponse.json({
         message: message,
         errors: validationResult.error.flatten().fieldErrors
       }, { status: 400 });
     }
-
+    
     const { email, suggestion } = validationResult.data;
 
     try {
-      await sendSuggestionEmail(
+      await sendNotificationEmail(
         TARGET_EMAIL_ADDRESS,
         GMAIL_USER || 'noreply@engnexus.ai', 
         email,
         suggestion
       );
-      console.log(`Sugestão capturada de: ${email}. Solicitação de envio para: ${TARGET_EMAIL_ADDRESS} processada.`);
+      const logMessage = suggestion 
+        ? `Sugestão capturada de: ${email}. Solicitação de envio para: ${TARGET_EMAIL_ADDRESS} processada.`
+        : `Lead para acesso antecipado capturado de: ${email}. Solicitação de envio para: ${TARGET_EMAIL_ADDRESS} processada.`;
+      console.log(logMessage);
     } catch (emailError) {
-      return NextResponse.json({ message: "Ocorreu um erro ao tentar registrar sua sugestão. Por favor, tente novamente mais tarde." }, { status: 500 });
+      const userMessage = suggestion
+        ? "Ocorreu um erro ao tentar registrar sua sugestão. Por favor, tente novamente mais tarde."
+        : "Ocorreu um erro ao tentar registrar seu e-mail. Por favor, tente novamente mais tarde.";
+      return NextResponse.json({ message: userMessage }, { status: 500 });
     }
     
     if (!transporter) {
         await new Promise(resolve => setTimeout(resolve, 750));
     }
 
-    return NextResponse.json({ message: `Obrigado! Sua sugestão foi enviada com sucesso e será analisada.` }, { status: 200 });
+    const successMessage = suggestion
+      ? `Obrigado! Sua sugestão foi enviada com sucesso e será analisada.`
+      : `Obrigado! Seu e-mail foi registrado com sucesso. Entraremos em contato em breve.`;
+    return NextResponse.json({ message: successMessage }, { status: 200 });
 
   } catch (error) {
-    console.error("Erro geral ao processar a solicitação de envio de sugestão:", error);
-    return NextResponse.json({ message: "Ocorreu um erro inesperado ao processar sua solicitação." }, { status: 500 });
+    console.error("Erro geral ao processar a solicitação:", error);
+    let userMessage = "Ocorreu um erro inesperado ao processar sua solicitação.";
+    if (error instanceof z.ZodError) {
+        userMessage = "Por favor, verifique os dados fornecidos e tente novamente.";
+    }
+    return NextResponse.json({ message: userMessage }, { status: 500 });
   }
 }

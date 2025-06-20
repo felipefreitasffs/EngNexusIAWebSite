@@ -1,16 +1,13 @@
 
 import Image from "next/image";
-import { EmailCaptureForm } from "./EmailCaptureForm";
+import { EmailOnlyCaptureForm } from "./EmailOnlyCaptureForm"; 
 import AnimatedSection from "./AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 
 export function HeroSection() {
   return (
     <section className="w-full py-24 md:py-40 bg-slate-900 relative overflow-hidden">
-      {/* Placeholder for particle/network animation */}
       <div className="absolute inset-0 z-0 particle-background opacity-20">
-        {/* This div is for the particle animation. Implement animation here. */}
-        {/* For example, a subtle dot pattern or slow-moving lines */}
       </div>
       <div className="container mx-auto px-4 md:px-6 text-center flex flex-col items-center relative z-10">
         <AnimatedSection as="div" className="mb-6">
@@ -32,15 +29,16 @@ export function HeroSection() {
           </p>
         </AnimatedSection>
         <AnimatedSection as="div" className="mt-10 w-full flex justify-center" delay="delay-300">
-          <EmailCaptureForm
-            formId="hero"
+          <EmailOnlyCaptureForm
+            formId="hero-email-capture"
             buttonText="Quero Acesso Antecipado!"
+            emailLabel="Seu melhor e-mail para acesso antecipado:"
+            emailPlaceholder="seu.email@empresa.tech"
             inputClassName="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 focus:ring-primary-highlight-from"
             buttonClassName="button-gradient-primary button-glow-hover shadow-lg"
           />
         </AnimatedSection>
         <AnimatedSection as="div" className="mt-16 w-full max-w-5xl" delay="delay-450">
-          {/* Placeholder for Video/Lottie Animation */}
           <div className="aspect-video bg-slate-800/50 rounded-xl shadow-2xl border border-slate-700 flex items-center justify-center">
             <Image
               src="/images/engnexusia1.png"
