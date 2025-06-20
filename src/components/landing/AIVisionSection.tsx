@@ -43,24 +43,24 @@ const insightExamples = [
 
 export function AIVisionSection() {
   return (
-    <section className="w-full py-16 md:py-24 bg-slate-900">
+    <section className="w-full py-16 md:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <AnimatedSection as="div" className="flex justify-center md:justify-start">
             <Image
               src="/images/engnexusia2.jpeg"
-              alt="Nexo de Dados Inteligente - Abstração de IA"
+              alt="Visualização de uma rede neural brilhante dentro de uma esfera, simbolizando a inteligência artificial do EngNexus AI e sua capacidade de conectar dados."
               width={500}
               height={500}
               className="rounded-xl shadow-2xl object-contain"
-              data-ai-hint="abstract data brain"
+              data-ai-hint="AI network"
             />
           </AnimatedSection>
           <AnimatedSection as="div" className="space-y-6" delay="delay-150">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl font-headline">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
               EngNexus AI não apenas mostra dados. <span className="text-gradient-primary">Ele pensa com você.</span>
             </h2>
-            <p className="text-lg text-slate-400 font-body">
+            <p className="text-lg text-muted-foreground font-body">
               Nossos algoritmos analisam sinais de performance, comunicação e processos para entregar insights que você não encontrará em nenhum outro lugar. Antecipe riscos, descubra oportunidades e otimize gargalos com a inteligência proativa da EngNexus AI.
             </p>
             <Carousel
@@ -80,7 +80,7 @@ export function AIVisionSection() {
                           <CardTitle className={`text-xl font-semibold ${insight.color} font-headline`}>{insight.title}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-sm text-slate-300">
+                          <p className="text-sm text-muted-foreground">
                             {insight.description}
                           </p>
                           <CardDescription className={`mt-2 text-xs ${insight.color} opacity-80`}>
