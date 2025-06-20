@@ -103,6 +103,6 @@ body {
 }
 
 .radial-image-mask {
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 15%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 75%);
-  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 15%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 10%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 65%);
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 10%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 65%);
 }
