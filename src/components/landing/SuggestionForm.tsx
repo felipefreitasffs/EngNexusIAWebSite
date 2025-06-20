@@ -4,7 +4,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +17,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/hooks/use-toast";
+// import { toast } from "@/hooks/use-toast"; // Removido, Formspree lida com confirmação
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react"; // Pode ser removido se não houver estado de loading controlado aqui
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -34,8 +34,9 @@ const FormSchema = z.object({
 
 interface SuggestionFormProps {
   buttonText: ReactNode;
-  buttonLoadingText?: ReactNode;
+  // buttonLoadingText?: ReactNode; // Removido
   formId: string;
+  formSpreeEndpoint: string; // Nova prop para o endpoint do Formspree
   inputClassName?: string;
   textareaClassName?: string;
   buttonClassName?: string;
@@ -47,8 +48,8 @@ interface SuggestionFormProps {
 
 export function SuggestionForm({
   buttonText,
-  buttonLoadingText = "Enviando...",
   formId,
+  formSpreeEndpoint,
   inputClassName,
   textareaClassName,
   buttonClassName,
@@ -57,7 +58,7 @@ export function SuggestionForm({
   suggestionLabel = "Sua Sugestão",
   suggestionPlaceholder = "Descreva sua ideia ou sugestão para o EngNexus AI aqui...",
 }: SuggestionFormProps) {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false); // Removido
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -66,46 +67,20 @@ export function SuggestionForm({
     },
   });
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/capture-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || "Ocorreu um erro. Tente novamente.");
-      }
-
-      toast({
-        title: "Sugestão Enviada!",
-        description: result.message,
-      });
-      form.reset();
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Falha ao enviar sua sugestão. Verifique sua conexão.";
-      toast({
-        variant: "destructive",
-        title: "Erro no Envio",
-        description: errorMessage,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  // A função onSubmit que fazia o fetch foi removida.
+  // O formulário agora fará um submit HTML padrão para o endpoint do Formspree.
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} id={formId} className="w-full max-w-md space-y-6">
+      <form
+        action={formSpreeEndpoint} // Aponta para o endpoint do Formspree
+        method="POST" // Método POST para Formspree
+        id={formId}
+        className="w-full max-w-md space-y-6"
+      >
         <FormField
           control={form.control}
-          name="email"
+          name="email" // Nome do campo para Formspree
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor={`${formId}-email`} className="text-slate-300">{emailLabel}</FormLabel>
@@ -120,7 +95,7 @@ export function SuggestionForm({
                     inputClassName
                   )}
                   aria-label="Endereço de e-mail"
-                  disabled={isLoading}
+                  // disabled={isLoading} // Removido
                 />
               </FormControl>
               <FormMessage className="text-red-400 text-left"/>
@@ -129,7 +104,7 @@ export function SuggestionForm({
         />
         <FormField
           control={form.control}
-          name="suggestion"
+          name="suggestion" // Nome do campo para Formspree
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor={`${formId}-suggestion`} className="text-slate-300">{suggestionLabel}</FormLabel>
@@ -143,13 +118,18 @@ export function SuggestionForm({
                     textareaClassName
                   )}
                   aria-label="Sua sugestão"
-                  disabled={isLoading}
+                  // disabled={isLoading} // Removido
                 />
               </FormControl>
               <FormMessage className="text-red-400 text-left"/>
             </FormItem>
           )}
         />
+        {/* Campo oculto para Formspree, se quiser redirecionar para uma página de agradecimento customizada */}
+        {/* <input type="hidden" name="_next" value="URL_DA_SUA_PAGINA_DE_OBRIGADO" /> */}
+        {/* Campo para assunto do e-mail que o Formspree envia */}
+        <input type="hidden" name="_subject" value="Nova Sugestão Recebida - EngNexus AI!" />
+
         <Button
           type="submit"
           size="lg"
@@ -158,10 +138,11 @@ export function SuggestionForm({
             "button-gradient-primary button-glow-hover shadow-lg",
             buttonClassName
           )}
-          disabled={isLoading}
+          // disabled={isLoading} // Removido
         >
-          {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-          {isLoading ? buttonLoadingText : buttonText}
+          {/* {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />} // Removido */}
+          {/* {isLoading ? buttonLoadingText : buttonText} // Modificado */}
+          {buttonText}
         </Button>
       </form>
     </Form>

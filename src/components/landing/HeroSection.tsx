@@ -31,6 +31,7 @@ export function HeroSection() {
         <AnimatedSection as="div" className="mt-10 w-full flex justify-center" delay="delay-300">
           <EmailOnlyCaptureForm
             formId="hero-email-capture"
+            formSpreeEndpoint="https://formspree.io/f/YOUR_UNIQUE_FORM_ID_FOR_HERO" // SUBSTITUA PELO SEU ENDPOINT
             buttonText="Quero Acesso Antecipado!"
             emailLabel="Seu melhor e-mail para acesso antecipado:"
             emailPlaceholder="seu.email@empresa.tech"

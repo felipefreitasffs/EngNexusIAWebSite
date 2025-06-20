@@ -4,7 +4,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,9 +16,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/hooks/use-toast";
+// import { toast } from "@/hooks/use-toast"; // Removido
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react"; // Pode ser removido
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -28,8 +28,9 @@ const FormSchema = z.object({
 
 interface EmailOnlyCaptureFormProps {
   buttonText: ReactNode;
-  buttonLoadingText?: ReactNode;
+  // buttonLoadingText?: ReactNode; // Removido
   formId: string;
+  formSpreeEndpoint: string; // Nova prop para o endpoint do Formspree
   inputClassName?: string;
   buttonClassName?: string;
   emailLabel?: string;
@@ -38,14 +39,14 @@ interface EmailOnlyCaptureFormProps {
 
 export function EmailOnlyCaptureForm({
   buttonText,
-  buttonLoadingText = "Enviando...",
   formId,
+  formSpreeEndpoint,
   inputClassName,
   buttonClassName,
   emailLabel = "Seu melhor e-mail",
   emailPlaceholder = "nome@dominio.com",
 }: EmailOnlyCaptureFormProps) {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false); // Removido
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -53,46 +54,20 @@ export function EmailOnlyCaptureForm({
     },
   });
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/capture-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data), // Apenas o e-mail será enviado
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || "Ocorreu um erro. Tente novamente.");
-      }
-
-      toast({
-        title: "Inscrição Recebida!",
-        description: result.message,
-      });
-      form.reset();
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Falha ao registrar seu e-mail. Verifique sua conexão.";
-      toast({
-        variant: "destructive",
-        title: "Erro no Envio",
-        description: errorMessage,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  // A função onSubmit que fazia o fetch foi removida.
+  // O formulário agora fará um submit HTML padrão para o endpoint do Formspree.
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} id={formId} className="w-full max-w-md space-y-6">
+      <form
+        action={formSpreeEndpoint} // Aponta para o endpoint do Formspree
+        method="POST" // Método POST para Formspree
+        id={formId}
+        className="w-full max-w-md space-y-6"
+      >
         <FormField
           control={form.control}
-          name="email"
+          name="email" // Nome do campo para Formspree
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor={`${formId}-email`} className="text-slate-300">{emailLabel}</FormLabel>
@@ -107,13 +82,18 @@ export function EmailOnlyCaptureForm({
                     inputClassName
                   )}
                   aria-label="Endereço de e-mail"
-                  disabled={isLoading}
+                  // disabled={isLoading} // Removido
                 />
               </FormControl>
               <FormMessage className="text-red-400 text-left"/>
             </FormItem>
           )}
         />
+        {/* Campo oculto para Formspree, se quiser redirecionar para uma página de agradecimento customizada */}
+        {/* <input type="hidden" name="_next" value="URL_DA_SUA_PAGINA_DE_OBRIGADO_HERO" /> */}
+        {/* Campo para assunto do e-mail que o Formspree envia */}
+        <input type="hidden" name="_subject" value="Novo Lead para Acesso Antecipado - EngNexus AI!" />
+
         <Button
           type="submit"
           size="lg"
@@ -122,10 +102,11 @@ export function EmailOnlyCaptureForm({
             "button-gradient-primary button-glow-hover shadow-lg",
             buttonClassName
           )}
-          disabled={isLoading}
+          // disabled={isLoading} // Removido
         >
-          {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-          {isLoading ? buttonLoadingText : buttonText}
+          {/* {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />} // Removido */}
+          {/* {isLoading ? buttonLoadingText : buttonText} // Modificado */}
+          {buttonText}
         </Button>
       </form>
     </Form>
