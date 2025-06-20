@@ -22,7 +22,7 @@ export function FinalCtaSection() {
         <AnimatedSection as="div" className="mt-10 w-full flex justify-center" delay="delay-300">
           <SuggestionForm
             formId="suggestion-form"
-            formSpreeEndpoint="https://formspree.io/f/YOUR_UNIQUE_FORM_ID_FOR_SUGGESTIONS" // SUBSTITUA PELO SEU ENDPOINT
+            formSpreeEndpoint="https://formspree.io/f/xeoklzyz" 
             buttonText="Enviar Sugestão"
             emailLabel="Seu E-mail (para contato, se necessário)"
             emailPlaceholder="seu.email@empresa.tech"
