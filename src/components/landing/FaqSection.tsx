@@ -127,24 +127,24 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section className="w-full py-16 md:py-24 bg-slate-900">
+    <section className="w-full py-16 md:py-24 bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection as="div" className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl font-headline">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
             Perguntas <span className="text-gradient-primary">Frequentes</span>
           </h2>
-          <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             Respostas para suas dúvidas sobre como EngNexus AI pode transformar sua liderança.
           </p>
         </AnimatedSection>
         <AnimatedSection as="div" className="max-w-3xl mx-auto" delay="delay-150">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-slate-700">
-                <AccordionTrigger className="text-left text-lg font-semibold text-slate-200 hover:no-underline hover:text-primary transition-colors py-6">
+              <AccordionItem key={index} value={`item-${index}`} className="border-border">
+                <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:no-underline hover:text-primary transition-colors py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-base text-slate-400 pb-6">
+                <AccordionContent className="text-base text-muted-foreground pb-6">
                   <div className="whitespace-pre-line">{faq.answer}</div>
                 </AccordionContent>
               </AccordionItem>
