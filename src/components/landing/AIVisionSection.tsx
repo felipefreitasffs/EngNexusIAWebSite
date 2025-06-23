@@ -64,15 +64,17 @@ export function AIVisionSection() {
                 {insightExamples.map((insight, index) => (
                   <CarouselItem key={index}>
                     <div className="p-1"> {/* Padding for carousel item spacing */}
-                      <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor} min-h-56 md:min-h-fit flex flex-col`}>
+                      <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor} h-64 md:h-auto flex flex-col`}>
                         <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2">
                           <insight.icon className={`h-6 w-6 ${insight.color}`} />
                           <CardTitle className={`text-xl font-semibold ${insight.color} font-headline`}>{insight.title}</CardTitle>
                         </CardHeader>
-                        <CardContent className="flex-grow">
-                          <p className="text-xs text-muted-foreground sm:text-sm">
-                            {insight.description}
-                          </p>
+                        <CardContent className="flex-grow flex flex-col justify-between">
+                          <div>
+                            <p className="text-xs text-muted-foreground sm:text-sm">
+                              {insight.description}
+                            </p>
+                          </div>
                           <CardDescription className={`mt-2 text-xs ${insight.color} opacity-80`}>
                             {insight.type}
                           </CardDescription>
