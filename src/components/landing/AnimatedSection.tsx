@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState, forwardRef } from "react";
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -13,7 +13,7 @@ interface AnimatedSectionProps {
   delay?: string; // e.g., 'delay-100', 'delay-200'
 }
 
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({
+const AnimatedSection = forwardRef<HTMLElement, AnimatedSectionProps>(({
   children,
   className,
   initialClassName = "opacity-0 translate-y-10",
@@ -21,9 +21,19 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   threshold = 0.1,
   as: Tag = 'div',
   delay = "",
-}) => {
+}, ref) => {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const nodeRef = useRef<HTMLElement>(null);
+
+  // Combina o ref interno (para o observer) e o ref encaminhado (para o pai)
+  const setRefs = (node: HTMLElement | null) => {
+    (nodeRef as React.MutableRefObject<HTMLElement | null>).current = node;
+    if (typeof ref === 'function') {
+      ref(node);
+    } else if (ref) {
+      (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,7 +48,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       { threshold }
     );
 
-    const currentRef = sectionRef.current;
+    const currentRef = nodeRef.current;
     if (currentRef) {
       observer.observe(currentRef);
     }
@@ -52,7 +62,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
 
   return (
     <Tag
-      ref={sectionRef}
+      ref={setRefs}
       className={cn(
         "transition-all duration-700 ease-out",
         delay,
@@ -63,6 +73,8 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       {children}
     </Tag>
   );
-};
+});
+
+AnimatedSection.displayName = "AnimatedSection";
 
 export default AnimatedSection;
