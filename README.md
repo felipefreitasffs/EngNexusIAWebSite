@@ -1,7 +1,7 @@
 
 # EngNexus AI - Seu Copiloto de IA para Liderança em Engenharia
 
-[![EngNexus AI](./public/images/engnexusia1.png)](https://engnexusia.com)
+[![EngNexus AI](./public/images/engnexusia1.png)](https://www.engnexusia.com)
 
 EngNexus AI é uma plataforma inovadora projetada para ser o copiloto de IA para líderes de engenharia. Nossa missão é conectar os pontos entre pessoas, código, fluxo de trabalho e custos, permitindo que líderes de tecnologia parem de gerenciar planilhas e comecem a liderar com clareza estratégica e insights proativos.
 
@@ -68,7 +68,7 @@ Esta landing page foi construída para apresentar o EngNexus AI, suas funcionali
     ```env
     # URL base da sua aplicação (necessário para SEO e sitemap)
     NEXT_PUBLIC_BASE_URL="http://localhost:9002" # Para desenvolvimento local
-    # NEXT_PUBLIC_BASE_URL="https://yourdomain.com" # Para produção
+    # NEXT_PUBLIC_BASE_URL="https://www.engnexusia.com" # Para produção
 
     # Nome da sua aplicação (usado em metadados e e-mails)
     NEXT_PUBLIC_APP_NAME="EngNexus AI"
@@ -115,9 +115,9 @@ Este arquivo informa aos motores de busca quais páginas eles podem ou não rast
 User-agent: *
 Disallow:
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://www.engnexusia.com/sitemap.xml
 ```
-**Lembre-se de substituir `https://yourdomain.com` pela URL real do seu site.**
+**Lembre-se de substituir `https://www.engnexusia.com` pela URL real do seu site.**
 
 **2. Crie o arquivo `public/sitemap.xml`:**
 Este arquivo ajuda os motores de busca a descobrir e entender a estrutura do seu site.
@@ -125,20 +125,20 @@ Este arquivo ajuda os motores de busca a descobrir e entender a estrutura do seu
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yourdomain.com</loc>
+    <loc>https://www.engnexusia.com</loc>
     <lastmod>2024-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://yourdomain.com/privacy-policy</loc>
+    <loc>https://www.engnexusia.com/privacy-policy</loc>
     <lastmod>2024-05-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
 ```
-**Lembre-se de substituir `https://yourdomain.com` pela URL real do seu site e ajustar a data `lastmod` se necessário.**
+**Lembre-se de substituir `https://www.engnexusia.com` pela URL real do seu site e ajustar a data `lastmod` se necessário.**
 
 **3. Crie Imagens para Redes Sociais:**
 Para uma melhor aparência ao compartilhar o link, crie e adicione as seguintes imagens na pasta `public/`:

@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'EngNexus AI';
 const APP_DESCRIPTION = 'O copiloto de IA para líderes de engenharia. Conectamos pessoas, código, fluxo de trabalho e custos para liderança estratégica e insights proativos.';
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com'; // Configure esta variável em .env.local
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.engnexusia.com'; // Configure esta variável em .env.local
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
