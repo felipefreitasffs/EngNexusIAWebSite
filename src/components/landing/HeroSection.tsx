@@ -18,7 +18,7 @@ export function HeroSection() {
           </Badge>
         </AnimatedSection>
         <AnimatedSection as="div" className="max-w-4xl">
-          <h1 className="text-4xl font-black tracking-tight sm:text-6xl md:text-7xl text-gradient-primary leading-snug">
+          <h1 className="pb-2 text-4xl font-black tracking-tight sm:text-6xl md:text-7xl text-gradient-primary leading-snug">
             Seu Copiloto de IA para Liderança em Engenharia.
           </h1>
         </AnimatedSection>
