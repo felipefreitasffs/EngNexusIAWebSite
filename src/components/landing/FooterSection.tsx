@@ -1,6 +1,4 @@
-
 import Link from "next/link";
-import { Linkedin, Twitter, Github } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 export function FooterSection() {
@@ -15,35 +13,6 @@ export function FooterSection() {
             <p className="text-sm mt-1">
               © {new Date().getFullYear()} EngNexus. Todos os direitos reservados.
             </p>
-          </div>
-          <div className="flex space-x-5">
-            <Link
-              href="https://linkedin.com/company/engnexus-ai-example" // Example Link
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-slate-400 hover:text-violet-400 transition-colors"
-            >
-              <Linkedin className="h-6 w-6" />
-            </Link>
-            <Link
-              href="https://twitter.com/engnexus_ai_example" // Example Link
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter/X"
-              className="text-slate-400 hover:text-cyan-400 transition-colors"
-            >
-              <Twitter className="h-6 w-6" />
-            </Link>
-             <Link
-              href="https://github.com/example/engnexus-ai" // Example Link
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="text-slate-400 hover:text-slate-200 transition-colors"
-            >
-              <Github className="h-6 w-6" />
-            </Link>
           </div>
           <div className="text-center md:text-right">
             <Link
