@@ -140,11 +140,9 @@ Este arquivo ajuda os motores de busca a descobrir e entender a estrutura do seu
 ```
 **Lembre-se de substituir `https://www.engnexusia.com` pela URL real do seu site e ajustar a data `lastmod` se necessário.**
 
-**3. Crie Imagens para Redes Sociais:**
-Para uma melhor aparência ao compartilhar o link, crie e adicione as seguintes imagens na pasta `public/`:
-*   `og-image.png` (tamanho recomendado: 1200x630 pixels)
-*   `twitter-image.png` (tamanho recomendado: 1200x600 pixels)
-*   `logo.png` (tamanho recomendado: 200x60 pixels ou similar)
+**3. Imagens para Redes Sociais e Logo:**
+*   **Imagens de Compartilhamento**: O site já está configurado para usar a imagem principal do dashboard (`public/images/engnexusia1.png`) para compartilhamentos no Twitter e Open Graph (Facebook, etc.).
+*   **Logotipo**: Crie um logotipo para a sua marca e salve-o como `public/logo.png` (tamanho recomendado: 200x60 pixels ou similar) para que apareça corretamente nos resultados de busca.
 
 ## 🎨 Estrutura de Pastas (Principais)
 

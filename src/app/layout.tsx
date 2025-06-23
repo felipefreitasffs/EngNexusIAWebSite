@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     images: [
       {
-        url: `https://placehold.co/1200x630.png`, // Substitua por public/og-image.png (1200x630px)
-        width: 1200,
-        height: 630,
-        alt: `Logotipo e slogan da ${APP_NAME}`,
+        url: `/images/engnexusia1.png`,
+        width: 960,
+        height: 540,
+        alt: `Demonstração da Interface do EngNexus AI`,
       },
     ],
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     // siteId: 'YourTwitterSiteID', // Se você tiver um ID de site do Twitter
     // creator: '@YourTwitterHandle', // Handle do Twitter do criador/empresa
     // creatorId: 'YourTwitterCreatorID', // ID do criador do Twitter
-    images: [`https://placehold.co/1200x600.png`], // Substitua por public/twitter-image.png (1200x600px)
+    images: [`/images/engnexusia1.png`],
   },
   robots: {
     index: true,
@@ -77,7 +77,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": APP_NAME,
   "url": BASE_URL,
-  "logo": `https://placehold.co/200x60.png`, // Substitua por public/logo.png
+  "logo": `${BASE_URL}/logo.png`, // Substitua por public/logo.png
 };
 
 const websiteSchema = {
