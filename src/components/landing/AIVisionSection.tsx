@@ -82,8 +82,8 @@ export function AIVisionSection() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-[-10px] top-1/2 -translate-y-1/2 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
-              <CarouselNext className="absolute right-[-10px] top-1/2 -translate-y-1/2 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
+              <CarouselPrevious className="absolute left-2 md:left-[-10px] top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
+              <CarouselNext className="absolute right-2 md:right-[-10px] top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
             </Carousel>
           </AnimatedSection>
           <AnimatedSection as="div" className="flex justify-center md:justify-end">
