@@ -58,12 +58,12 @@ export function AIVisionSection() {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-md md:max-w-lg relative"
+              className="w-full relative"
             >
               <CarouselContent>
                 {insightExamples.map((insight, index) => (
                   <CarouselItem key={index}>
-                    <div className="p-1"> {/* Padding for carousel item spacing */}
+                    <div className="p-1">
                       <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor} h-64 md:h-auto flex flex-col`}>
                         <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2">
                           <insight.icon className={`h-6 w-6 ${insight.color}`} />
