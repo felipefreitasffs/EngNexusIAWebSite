@@ -132,10 +132,16 @@ export function InteractiveFeaturesMatrix() {
   const activeFeature = featuresData.find(f => f.id === activeFeatureId) || featuresData[0];
   const featureDisplayRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const isInitialRender = useRef(true);
 
   useEffect(() => {
+    // Skip scroll on initial render
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
+
     if (isMobile && featureDisplayRef.current) {
-      // Use a small timeout to ensure the DOM is updated before scrolling
       const timer = setTimeout(() => {
         featureDisplayRef.current?.scrollIntoView({
           behavior: 'smooth',
