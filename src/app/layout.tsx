@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
   description: APP_DESCRIPTION,
   applicationName: APP_NAME,
+  alternates: {
+    canonical: '/',
+  },
   keywords: ['IA para engenharia', 'liderança de engenharia', 'gestão de times tech', 'métricas de engenharia', 'DORA metrics', 'FinOps', 'DEVEX', 'EngNexus AI'],
   authors: [{ name: 'EngNexus Team', url: BASE_URL }],
   creator: 'EngNexus Team',
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
     siteName: APP_NAME,
     images: [
       {
-        url: `${BASE_URL}/og-image.png`, // Crie uma imagem em public/og-image.png (1200x630px)
+        url: `https://placehold.co/1200x630.png`, // Substitua por public/og-image.png (1200x630px)
         width: 1200,
         height: 630,
         alt: `Logotipo e slogan da ${APP_NAME}`,
@@ -42,7 +45,7 @@ export const metadata: Metadata = {
     // siteId: 'YourTwitterSiteID', // Se você tiver um ID de site do Twitter
     // creator: '@YourTwitterHandle', // Handle do Twitter do criador/empresa
     // creatorId: 'YourTwitterCreatorID', // ID do criador do Twitter
-    images: [`${BASE_URL}/twitter-image.png`], // Crie uma imagem em public/twitter-image.png (ex: 1200x675px)
+    images: [`https://placehold.co/1200x600.png`], // Substitua por public/twitter-image.png (1200x600px)
   },
   robots: {
     index: true,
@@ -74,7 +77,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": APP_NAME,
   "url": BASE_URL,
-  "logo": `${BASE_URL}/logo.png`, // Crie uma imagem em public/logo.png
+  "logo": `https://placehold.co/200x60.png`, // Substitua por public/logo.png
 };
 
 const websiteSchema = {
