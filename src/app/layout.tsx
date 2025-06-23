@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -74,11 +75,6 @@ const organizationSchema = {
   "name": APP_NAME,
   "url": BASE_URL,
   "logo": `${BASE_URL}/logo.png`, // Crie uma imagem em public/logo.png
-  "sameAs": [
-    "https://twitter.com/engnexus_ai_example", // Substitua pelo seu Twitter real
-    "https://linkedin.com/company/engnexus-ai-example" // Substitua pelo seu LinkedIn real
-    // Adicione outros perfis sociais aqui
-  ]
 };
 
 const websiteSchema = {
