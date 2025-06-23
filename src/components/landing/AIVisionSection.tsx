@@ -64,13 +64,13 @@ export function AIVisionSection() {
                 {insightExamples.map((insight, index) => (
                   <CarouselItem key={index}>
                     <div className="p-1"> {/* Padding for carousel item spacing */}
-                      <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor}`}>
+                      <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor} min-h-56 md:min-h-fit`}>
                         <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2">
                           <insight.icon className={`h-6 w-6 ${insight.color}`} />
                           <CardTitle className={`text-xl font-semibold ${insight.color} font-headline`}>{insight.title}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-xs text-muted-foreground sm:text-sm">
                             {insight.description}
                           </p>
                           <CardDescription className={`mt-2 text-xs ${insight.color} opacity-80`}>
@@ -82,8 +82,8 @@ export function AIVisionSection() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-2 md:left-[-10px] top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
-              <CarouselNext className="absolute right-2 md:right-[-10px] top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all" />
+              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all md:left-[-10px]" />
+              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all md:right-[-10px]" />
             </Carousel>
           </AnimatedSection>
           <AnimatedSection as="div" className="flex justify-center md:justify-end">
