@@ -65,11 +65,11 @@ export function AIVisionSection() {
                   <CarouselItem key={index}>
                     <div className="p-1">
                       <Card className={`shadow-lg rounded-xl border ${insight.borderColor} ${insight.bgColor}`}>
-                        <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2 px-4">
+                        <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2 px-12 md:px-6">
                           <insight.icon className={`h-6 w-6 ${insight.color}`} />
                           <CardTitle className={`text-xl font-semibold ${insight.color} font-headline`}>{insight.title}</CardTitle>
                         </CardHeader>
-                        <CardContent className="px-4">
+                        <CardContent className="px-12 md:px-6">
                           <div>
                             <p className="text-xs text-muted-foreground sm:text-sm">
                               {insight.description}
@@ -84,8 +84,8 @@ export function AIVisionSection() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all md:-left-12" />
-              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all md:-right-12" />
+              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all md:-left-8" />
+              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 text-primary-foreground bg-primary/60 hover:bg-primary border-primary/50 disabled:opacity-30 transition-all md:-right-8" />
             </Carousel>
           </AnimatedSection>
           <AnimatedSection as="div" className="flex justify-center md:justify-end">
