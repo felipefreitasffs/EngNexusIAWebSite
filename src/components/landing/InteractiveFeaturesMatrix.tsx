@@ -134,14 +134,18 @@ export function InteractiveFeaturesMatrix() {
   const isMobile = useIsMobile();
   const isInitialRender = useRef(true);
 
+  // This useEffect handles scrolling to the feature content on mobile
+  // when a feature button is clicked.
   useEffect(() => {
-    // Skip scroll on initial render
+    // We use a ref to track the initial render and prevent scrolling on load.
+    // The scroll should only happen on user interaction.
     if (isInitialRender.current) {
       isInitialRender.current = false;
       return;
     }
 
     if (isMobile && featureDisplayRef.current) {
+      // A short timeout can help ensure the element is painted before scroll.
       const timer = setTimeout(() => {
         featureDisplayRef.current?.scrollIntoView({
           behavior: 'smooth',
@@ -150,7 +154,8 @@ export function InteractiveFeaturesMatrix() {
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [activeFeatureId, isMobile]);
+    // The effect should only run when the active feature changes, not when `isMobile` is determined.
+  }, [activeFeatureId]);
 
   return (
     <section className="w-full py-16 md:py-24 bg-background/70" aria-labelledby="interactive-features-title">
