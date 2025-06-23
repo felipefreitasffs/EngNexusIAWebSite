@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import {
@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import AnimatedSection from './AnimatedSection';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface FeatureDetail {
   id: string;
@@ -129,6 +130,21 @@ const featuresData: FeatureDetail[] = [
 export function InteractiveFeaturesMatrix() {
   const [activeFeatureId, setActiveFeatureId] = useState<string>(featuresData[0].id);
   const activeFeature = featuresData.find(f => f.id === activeFeatureId) || featuresData[0];
+  const featureDisplayRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
+  useEffect(() => {
+    if (isMobile && featureDisplayRef.current) {
+      // Use a small timeout to ensure the DOM is updated before scrolling
+      const timer = setTimeout(() => {
+        featureDisplayRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [activeFeatureId, isMobile]);
 
   return (
     <section className="w-full py-16 md:py-24 bg-background/70" aria-labelledby="interactive-features-title">
@@ -166,6 +182,7 @@ export function InteractiveFeaturesMatrix() {
           </AnimatedSection>
 
           <AnimatedSection
+            ref={featureDisplayRef}
             as="div"
             key={activeFeature.id}
             className="transition-opacity duration-500 ease-in-out"
