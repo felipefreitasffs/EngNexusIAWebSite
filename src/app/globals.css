@@ -30,7 +30,7 @@ body {
     --accent: 225 20% 30%; /* HSL: Pode ser ajustado para uma cor de destaque diferente se necessário */
     --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%; /* Vermelho escuro para destructive */
+    --destructive: 0 84.2% 60.2%; /* Vermelho brilhante para destructive (Tailwind Red-500) */
     --destructive-foreground: 0 0% 98%;
 
     --border: 225 20% 30%; /* HSL: Mesma cor de secondary para bordas */
